@@ -1,3 +1,8 @@
+# TODO:
+ - Add logging features
+ - Add debugging features
+ - 
+
 
 Example File Structure
 /src

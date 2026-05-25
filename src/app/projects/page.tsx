@@ -9,7 +9,14 @@ import { Section, Page } from '@/gui/core'
 export default function ProjectPage() {
     return (
         <Page>
-            <Section>This is my first Section in my Project Page</Section>
+            <Section className="bg-yellow-500 min-h-96">
+                <p>This is my FIRST Section in my Project Page.</p>
+                <p>className="bg-yellow-500 min-h-96"</p>
+            </Section>
+            <Section className="bg-red-500 min-h-96">
+                <p>This is my SECOND Section in my Project Page.</p>
+                <p>className="bg-red-500 min-h-96"</p>
+            </Section>
         </Page>
     );
 }

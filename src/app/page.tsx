@@ -6,19 +6,14 @@
 // import { Section } from '@/ui/layout/tags';
 
 import Link from 'next/link';
-import {Page, Header, Section, Footer, Nav } from '@/gui/core'
+import {Page, Header, Section, Footer, NavList } from '@/gui/core'
 
 export default function HomePage() {
     return (
         <Page>
+
             {/** Navigation Header that will become it's own container. */}
-            <Header className="sticky top-0 z-50 w-full bg-green-500">
-                <Nav className="container mx-auto flex h-16 items-center justify-center px-4">
-                    {/** Auto generate the Link project stuffs. */}
-                    <Link href="/" className="hover:text-blue-500 text-white font-bold text-lg p-2">HOME</Link>
-                    <Link href="/projects" className="hover:text-blue-500 text-white font-bold text-lg p-2">PROJECTS</Link>
-                </Nav>
-            </Header>
+
             <Section className="bg-purple-500 h-96" >
                 This is the FIRST Section on my Home Page ...
             </Section>
@@ -28,20 +23,8 @@ export default function HomePage() {
             <Section className="bg-orange-500 h-96" >
                 This is the THIRD Section on my Home Page ...
             </Section>
-            <Footer>
-                  <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-                    <div className="mb-4 md:mb-0">
-                    <span className="text-xl font-bold">MyBrand</span>
-                    </div>
-                    <ul className="flex space-x-6 text-sm">
-                    <li><a href="/" className="hover:text-gray-400">About</a></li>
-                    <li><a href="/" className="hover:text-gray-400">Services</a></li>
-                    <li><a href="/" className="hover:text-gray-400">Contact</a></li>
-                    </ul>
-                    <div className="mt-4 md:mt-0 text-sm text-gray-400">
-                    © 2024 MyBrand Inc. All rights reserved.
-                    </div>
-                </div>
+
+            <Footer >
             </Footer>
         </Page>
     );

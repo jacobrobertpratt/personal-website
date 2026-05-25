@@ -1,11 +1,12 @@
 
 import type { Metadata } from "next";
-import { Body, Header, Nav, Main } from "@/gui/core";
+import { Body, Main, RootHeader, RootFooter } from "@/gui/core";
+import { GLOBAL_APP_TITLE, GlobalClassNameDictionary } from '@/global'
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jacob Robert Pratt", // Tab Title //
+  title: GLOBAL_APP_TITLE, // Tab Text //
   description: "Personal portfolio of projects and work experience."
 };
 
@@ -15,11 +16,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
       return (
-        <html lang="en" className="h-full w-full">
-            <Body className="min-h-full min-w-full">
-                <Main>
-                    {children}
-                </Main>
+        <html lang="en" className={GlobalClassNameDictionary.html.classname}>
+            <Body className={GlobalClassNameDictionary.body.classname}>
+                <RootHeader />
+                <Main className={GlobalClassNameDictionary.main.classname}>{children}</Main>
+                <RootFooter />
             </Body>
         </html >
   );
