@@ -39,3 +39,6 @@ next-env.d.ts
 # Personal
 /archive
 /arch
+
+#docs
+*.drawio.bkp
