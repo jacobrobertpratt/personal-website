@@ -1,7 +1,12 @@
 
 import type { Metadata } from "next";
-import { Body, Main, RootHeader, RootFooter } from "@/gui/core";
-import { GLOBAL_APP_TITLE, GlobalClassNameDictionary } from '@/global'
+
+import { GLOBAL_APP_TITLE } from '@/global'
+
+import { Html, Body, Main, Header, Navi, RootFooter } from "@/gui/core";
+import { Menu } from "@/gui/widgets"
+
+import { HeaderTitle, HeaderIcon } from "@/gui/client"
 
 import "./globals.css";
 
@@ -10,19 +15,41 @@ export const metadata: Metadata = {
   description: "Personal portfolio of projects and work experience."
 };
 
+/** -------------- ROOT HEADER -------------- */
+
+const RootLayoutStyles = {
+    head: "bg-green-500"
+}
+
+function RootHeader({...props}) {
+    return (
+        <Header className={RootLayoutStyles.head}>
+                
+                <HeaderIcon />
+
+                <HeaderTitle />
+
+                <Menu />
+
+        </Header>
+    );
+}
+
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-      return (
-        <html lang="en" className={GlobalClassNameDictionary.html.classname}>
-            <Body className={GlobalClassNameDictionary.body.classname}>
+    return (
+        <Html lang="en" >
+            <Body >
                 <RootHeader />
-                <Main className={GlobalClassNameDictionary.main.classname}>{children}</Main>
+                <Main >
+                    {children}
+                </Main>
                 <RootFooter />
             </Body>
-        </html >
+        </Html >
   );
 }
 

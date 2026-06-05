@@ -6,18 +6,38 @@ export var GLOBAL_APP_DESCRIPTION: string = "Personal portfolio of projects and 
 
 export var GLOBAL_APP_COPYWRITE: string = '© 2026 '+GLOBAL_APP_TITLE+' Inc. All rights reserved.';
 
-
-
 /** ---------------------- PATH ---------------------- **/
 
 import path from 'path';
 export const PATH_ROOT_APP = path.join( process.cwd() , "app" );
 
+/** ---------------------- STYLES ---------------------- **/
 
-/** ---------------------- GLOBAL CLASS NAMES ---------------------- **/
-
-export const GlobalClassNameDictionary = {
-    html: { classname: "h-full w-full" },
-    body: { classname: "min-h-full min-w-full"},
-    main: { classname: "min-h-screen min-w-full"}
+export const GlobalLayoutClassNames = {
+    root: {
+        header: {
+            head: "bg-green-500",
+            navl: "container mx-auto flex items-center justify-center",
+            link: "hover:text-blue-500 text-white font-bold text-lg"
+        },
+        footer: {
+            foot: "container mx-auto px-4 flex flex-col md:flex-row justify-between items-center",
+            navl: "flex space-x-6 text-sm",
+            link: "hover:text-gray-400 p-2"
+        }
+    },
+    home: {
+    }
 }
+
+export const HeaderTitleStyle = {
+    classname: "text-4xl font-bold"
+}
+
+// const head_classname: string = "sticky top-0 z-50 w-full bg-green-500";
+// const nav_classname: string = "container mx-auto flex items-center justify-center";
+// const link_classname: string = "hover:text-blue-500 text-white font-bold text-lg";
+
+// const footer_classname: string = "container mx-auto px-4 flex flex-col md:flex-row justify-between items-center";
+// const nav_classname: string = "flex space-x-6 text-sm";
+// const link_classname: string = "hover:text-gray-400 p-2";

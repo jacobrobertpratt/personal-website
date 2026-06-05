@@ -14,18 +14,19 @@ export default function HomePage() {
 
             {/** Navigation Header that will become it's own container. */}
 
-            <Section className="bg-purple-500 h-96" >
+            <Section className="bg-purple-500" >
                 This is the FIRST Section on my Home Page ...
             </Section>
-            <Section className="bg-blue-500 h-96" >
+
+            <Section className="bg-blue-500" >
                 This is the SECOND Section on my Home Page ...
             </Section>
-            <Section className="bg-orange-500 h-96" >
+
+            <Section className="bg-orange-500" >
                 This is the THIRD Section on my Home Page ...
             </Section>
 
-            <Footer >
-            </Footer>
+            <Footer />
         </Page>
     );
 }

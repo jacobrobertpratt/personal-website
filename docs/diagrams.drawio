@@ -1,4 +1,4 @@
-<mxfile host="Electron" pages="2">
+<mxfile host="Electron" pages="3">
   <diagram name="Layout" id="z4C-rfCt5vUPQE5WHfMK">
     <mxGraphModel dx="4151" dy="3814" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -395,6 +395,41 @@
         </mxCell>
         <mxCell id="1YLU6Lc77VXE8T1gRHJq-69" parent="-1dOeokIRKYEf4MUiDuV-0" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=24;dashed=1;dashPattern=1 2;container=0;" value="The project focused on this area of concern, in an attempt to better understand or accomplish things. The results of the project were a thing, and that thing showed me new stuffs." vertex="1">
           <mxGeometry height="220" width="360" x="40" y="450" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="qZZIZn76VmX5i26I_2jO" name="icons">
+    <mxGraphModel dx="741" dy="576" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UcNwHlZXAa586Km_05_g-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=default;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="120" width="120" x="240" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="UcNwHlZXAa586Km_05_g-3" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=4;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="260" y="499.76" as="sourcePoint" />
+            <mxPoint x="340" y="499.76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcNwHlZXAa586Km_05_g-7" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=4;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="260" y="469.76" as="sourcePoint" />
+            <mxPoint x="340" y="469.76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcNwHlZXAa586Km_05_g-8" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=4;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="260" y="529.76" as="sourcePoint" />
+            <mxPoint x="340" y="529.76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcNwHlZXAa586Km_05_g-11" parent="1" style="triangle;whiteSpace=wrap;html=1;aspect=fixed;flipV=1;legacyAnchorPoints=0;flipH=1;strokeWidth=3;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="120" width="90" x="560" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="UcNwHlZXAa586Km_05_g-12" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fillColor=light-dark(#FFFFFF,transparent);fontSize=24;" value="ICON" vertex="1">
+          <mxGeometry height="120" width="120" x="240" y="640" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

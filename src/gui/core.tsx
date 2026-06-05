@@ -1,49 +1,66 @@
 
 import Link from 'next/link'
-import { GLOBAL_APP_COPYWRITE, GLOBAL_APP_TITLE } from '@/global';
+import { GLOBAL_APP_COPYWRITE, GLOBAL_APP_TITLE, GlobalLayoutClassNames } from '@/global';
 
 /**
  * TODO:
  *  - make structure that defines class definitions. This would naturally inherit tailwind names ... maybe.
  *  - 
  * */
-// interface PropsTypeInter {
-//     color?: string | '',
-//     shape?: string | '',
-//     active?: string | '',
-//     hover?: string | '',
-//     size?: string | '',
-//     dark?: string | ''
-// }
 
-// const classmain: PropsTypeInter = {
-//     color:'bg-slate-400',
-//     hover:'bg-slate-800'
-// }
+const CoreLayoutStyles = {
+    html: "h-full w-full",
+    body: "min-h-full min-w-full",
+    main: "min-h-screen min-w-full",
+    page: "",
+    sect: "h-96",
+    head: "sticky top-0 z-50 w-full flex flex-row justify-between",
+    foot: "",
+    link: "",
+    navi: ""
+}
+
+export function Html({...props}) {
+    props.className = CoreLayoutStyles.html + " " + props.className
+    return ( <html {...props}>{props.children}</html> );
+}
 
 export function Body({...props}) {
+    props.className = CoreLayoutStyles.body + " " + props.className
     return ( <body {...props}>{props.children}</body> );
 }
 
 export function Main({...props}) {
-    // props.className = classmain.color+' '+{...props.className};
+    props.className = CoreLayoutStyles.main + " " + props.className
     return ( <main {...props}>{props.children}</main> );
 }
 
 export function Page({...props}) {
+    props.className = CoreLayoutStyles.page + " " + props.className
     return ( <div {...props}>{props.children}</div> );
 }
 
 export function Section({...props}) {
+    props.className = CoreLayoutStyles.sect + " " + props.className;
     return ( <section {...props}>{props.children}</section>);
 }
 
 export function Header({...props}) {
+    props.className = CoreLayoutStyles.head + " " + props.className
     return ( <header {...props}>{props.children}</header>);
 }
 
 export function Footer({...props}) {
+    props.className = CoreLayoutStyles.foot + " " + props.className
     return ( <footer {...props}>{props.children}</footer>);
+}
+
+export function Navi({...props}) {
+    props.className = CoreLayoutStyles.navi + " " + props.className
+    return (
+    <nav {...props}>
+        {props.children}
+    </nav>);
 }
 
 export function NavList({...props}) {
@@ -56,7 +73,6 @@ export function NavList({...props}) {
 }
 
 export function NavItem({...props}) {
-    const link_classname = "";
     return (
         <li>
             <Link href={props.href} {...props}>
@@ -66,22 +82,33 @@ export function NavItem({...props}) {
     );
 }
 
-/** -------------- ROOT HEADER -------------- */
+/**
+ * <header class="flex justify-between items-center px-6 py-4 bg-white shadow-md">
+  <!-- 1. Left Section (e.g., Logo) -->
+  <div class="flex-1">
+    <a href="#" class="font-bold text-xl text-gray-800">Brand</a>
+  </div>
 
-export function RootHeader({...props}) {
-    const head_classname: string = "sticky top-0 z-50 w-full bg-green-500";
-    const nav_classname: string = "container mx-auto flex items-center justify-center";
-    const link_classname: string = "hover:text-blue-500 text-white font-bold text-lg";
-    return (
-        <Header className={head_classname}>
-            <NavList className={nav_classname}>
-                <li><Link href="/" className={link_classname}>HOME</Link></li>
-                <li><Link href="/projects" className={link_classname}>PROJECTS</Link></li>
-            </NavList>
-        </Header>
-    );
-}
+  <!-- 2. Center Section (e.g., Navigation) -->
+  <div class="flex-1 flex justify-center">
+    <nav class="space-x-6">
+      <a href="#" class="text-gray-600 hover:text-gray-900">Features</a>
+      <a href="#" class="text-gray-600 hover:text-gray-900">Pricing</a>
+    </nav>
+  </div>
 
+  <!-- 3. Right Section (e.g., Buttons) -->
+  <div class="flex-1 flex justify-end">
+    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Sign Up</button>
+  </div>
+</header>
+
+-------- OLD --------
+<NavList className={GlobalLayoutClassNames.root.header.navl}>
+    <li><Link href="/" className={GlobalLayoutClassNames.root.header.link}>HOME</Link></li>
+    <li><Link href="/projects" className={GlobalLayoutClassNames.root.header.link}>PROJECTS</Link></li>
+</NavList>
+ */
 
 /** -------------- ROOT FOOTER -------------- */
 
@@ -125,14 +152,12 @@ function buildLinkArrayItems({
 }
 
 export function RootFooter({...props}) {
-    const footer_classname: string ="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center";
-    const nav_classname: string = "flex space-x-6 text-sm";
-    const link_classname: string = "hover:text-gray-400 p-2";
+    
     return (
-        <Footer className={footer_classname}>
+        <Footer className={GlobalLayoutClassNames.root.footer.foot}>
             {buildTitleText()}
-            <NavList className={nav_classname}>
-                {buildLinkArrayItems({classname: link_classname})}
+            <NavList className={GlobalLayoutClassNames.root.footer.navl}>
+                {buildLinkArrayItems({classname: GlobalLayoutClassNames.root.footer.link})}
             </NavList>
             {/* {buildFooterLinks()} */}
             {buildCopyWriteText()}
