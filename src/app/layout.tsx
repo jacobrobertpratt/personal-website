@@ -24,13 +24,9 @@ const RootLayoutStyles = {
 function RootHeader({...props}) {
     return (
         <Header className={RootLayoutStyles.head}>
-                
-                <HeaderIcon />
-
-                <HeaderTitle />
-
-                <Menu />
-
+            <HeaderIcon />
+            <HeaderTitle />
+            <Menu />
         </Header>
     );
 }

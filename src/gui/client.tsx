@@ -1,5 +1,6 @@
 'use client'
 
+//  //
 import { usePathname } from 'next/navigation';
 import { HeaderTitleStyle } from '@/global';
 
@@ -10,22 +11,60 @@ import Image from 'next/image';
 // Images //
 import SiteIcon from '@/../public/site-icons.svg';
 import BackArrow from '@/../public/back-arrow.svg';
+import MenuIcon from "@/../public/menu-icon.svg"
 
+// import { Button } from './widgets';
 
-const pathname_to_titles = {    // path mapped text
+let isActive = false;
+
+const pathname_to_titles = {
     '/':'HOME',
     '/projects':'PROJECTS'
 }
 
+const WidgetLayoutStyles = {
+    button: ""
+}
+
+export function Button({...props}) {
+    props.className = WidgetLayoutStyles.button + " " + props.className
+    return ( <button {...props}>{props.children}</button> );
+}
+
+export function ClickButton({...props}) {
+
+    const handleClick = () => {
+        if (isActive) {
+            isActive = false
+        } else {
+            isActive = true
+        }
+    };
+
+    let to_return = (
+        <Button onClick={handleClick} className="p-2">
+            <Image src={MenuIcon} alt="MENU" width={36} height={36} />
+        </Button>
+    );
+
+    if (isActive) {
+        to_return = (
+            <Button onClick={handleClick} className="p-2">
+                Nothing
+            </Button>
+        );
+    }
+    
+    return ( to_return );
+
+}
 
 export function HeaderTitle({...props}) {
 
     const pathname: string = usePathname();
-    console.log("Path Name: "+pathname);
-
+    const title: string = pathname_to_titles[pathname]; // TODO: need to fix red squiggle.
+    
     props.className = HeaderTitleStyle.classname + " " + props.className;
-    const title: string = pathname_to_titles[ pathname ];
-
     return (
         <h1 className="text-4xl font-bold">
             {title}
@@ -33,7 +72,6 @@ export function HeaderTitle({...props}) {
     );
     
 }
-
 
 export function HeaderIcon({...props}) {
     // Should change between 

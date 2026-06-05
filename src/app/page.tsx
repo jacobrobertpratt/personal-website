@@ -27,6 +27,7 @@ export default function HomePage() {
             </Section>
 
             <Footer />
+            
         </Page>
     );
 }

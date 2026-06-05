@@ -57,10 +57,7 @@ export function Footer({...props}) {
 
 export function Navi({...props}) {
     props.className = CoreLayoutStyles.navi + " " + props.className
-    return (
-    <nav {...props}>
-        {props.children}
-    </nav>);
+    return ( <nav {...props}>{props.children}</nav> );
 }
 
 export function NavList({...props}) {
