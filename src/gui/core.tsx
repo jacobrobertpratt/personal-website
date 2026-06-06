@@ -2,22 +2,14 @@
 import Link from 'next/link'
 import { GLOBAL_APP_COPYWRITE, GLOBAL_APP_TITLE, GlobalLayoutClassNames } from '@/global';
 
-/**
- * TODO:
- *  - make structure that defines class definitions. This would naturally inherit tailwind names ... maybe.
- *  - 
- * */
-
 const CoreLayoutStyles = {
     html: "h-full w-full",
     body: "min-h-full min-w-full",
     main: "min-h-screen min-w-full",
     page: "",
-    sect: "h-96",
+    sect: "flex flex-wrap items-center justify-center",
     head: "sticky top-0 z-50 w-full flex flex-row justify-between",
-    foot: "",
-    link: "",
-    navi: ""
+    foot: ""
 }
 
 export function Html({...props}) {
@@ -55,11 +47,6 @@ export function Footer({...props}) {
     return ( <footer {...props}>{props.children}</footer>);
 }
 
-export function Navi({...props}) {
-    props.className = CoreLayoutStyles.navi + " " + props.className
-    return ( <nav {...props}>{props.children}</nav> );
-}
-
 export function NavList({...props}) {
     return (
     <nav {...props}>
@@ -69,51 +56,12 @@ export function NavList({...props}) {
     </nav>);
 }
 
-export function NavItem({...props}) {
-    return (
-        <li>
-            <Link href={props.href} {...props}>
-                {props.children}
-            </Link>
-        </li>
-    );
-}
-
-/**
- * <header class="flex justify-between items-center px-6 py-4 bg-white shadow-md">
-  <!-- 1. Left Section (e.g., Logo) -->
-  <div class="flex-1">
-    <a href="#" class="font-bold text-xl text-gray-800">Brand</a>
-  </div>
-
-  <!-- 2. Center Section (e.g., Navigation) -->
-  <div class="flex-1 flex justify-center">
-    <nav class="space-x-6">
-      <a href="#" class="text-gray-600 hover:text-gray-900">Features</a>
-      <a href="#" class="text-gray-600 hover:text-gray-900">Pricing</a>
-    </nav>
-  </div>
-
-  <!-- 3. Right Section (e.g., Buttons) -->
-  <div class="flex-1 flex justify-end">
-    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Sign Up</button>
-  </div>
-</header>
-
--------- OLD --------
-<NavList className={GlobalLayoutClassNames.root.header.navl}>
-    <li><Link href="/" className={GlobalLayoutClassNames.root.header.link}>HOME</Link></li>
-    <li><Link href="/projects" className={GlobalLayoutClassNames.root.header.link}>PROJECTS</Link></li>
-</NavList>
- */
-
 /** -------------- ROOT FOOTER -------------- */
 
 // List of links to use -> move to global.tsx (or better just build based on locaiton).
 const links: {href:string,text:string}[] = [
     { href:'/',text:'Home'},
-    { href:'/',text:'About'},
-    { href:'/',text:'Contact'}
+    { href:'/projects',text:'Thesis'}
 ];
 
 function buildTitleText() {
