@@ -10,8 +10,6 @@ import { Header, Footer } from "@/gui/core";
 import { HeaderTitle, HeaderIcon } from "@/gui/client";
 import { Menu } from "@/gui/widgets";
 
-
-
 export const metadata: Metadata = {
   title: GLOBAL_APP_TITLE, // Tab Text //
   description: "Personal portfolio of projects and work experience."

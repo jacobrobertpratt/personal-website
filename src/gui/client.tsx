@@ -77,7 +77,7 @@ export function HeaderIcon({...props}) {
     // Should change between 
 
     const pathname: string = usePathname();
-    console.log("Path Name: "+pathname);
+    // console.log("Path Name: "+pathname);
 
     props.className = HeaderTitleStyle.classname + " " + props.className;
     let icon_value = SiteIcon;

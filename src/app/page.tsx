@@ -19,19 +19,15 @@ export default function HomePage() {
 
             <Section className="bg-blue-500" >
                 
-                <ProjectCard href="/projects" title="Masters Thesis" >{temp_text}</ProjectCard>
+                <ProjectCard href="/projects/thesis" title="Masters Thesis" >{temp_text}</ProjectCard>
                 
-                <ProjectCard href="/projects" title="3D Projects" >{temp_text}</ProjectCard>
+                <ProjectCard href="/projects/3d" title="3D Projects" >{temp_text}</ProjectCard>
                 
-                <ProjectCard href="/projects" title="Other Proj" >{temp_text}</ProjectCard>
+                <ProjectCard href="/projects/other" title="Other Proj" >{temp_text}</ProjectCard>
 
-                <ProjectCard href="/projects" title="Stuffs" >{temp_text}</ProjectCard>
+                <ProjectCard href="/projects/stuffs" title="Stuffs" >{temp_text}</ProjectCard>
                 
             </Section>
-
-            {/* <Section className="bg-orange-500 h-96" >
-                This is the THIRD Section on my Home Page ...
-            </Section> */}
             
         </div>
     );
