@@ -4,22 +4,40 @@
 // import { TextP } from '@/ui/text';
 // import NavBar from "@/ui/layout/snav";
 // import { Section } from '@/ui/layout/tags';
-import { Section, Page } from '@/gui/core'
 
-export default function ProjectPage() {
+
+export default function Projects({...props}) {
     return (
-        <Page>
-            <Section className="bg-yellow-500 min-h-96">
-                <p>This is my FIRST Section in my Project Page.</p>
-                <p>className="bg-yellow-500 min-h-96"</p>
-            </Section>
-            <Section className="bg-red-500 min-h-96">
-                <p>This is my SECOND Section in my Project Page.</p>
-                <p>className="bg-red-500 min-h-96"</p>
-            </Section>
-        </Page>
+        <div {...props}>
+            {props.children}
+        </div>
     );
 }
+
+{/* <Section className="bg-yellow-500 min-h-96">
+    <p>This is my FIRST Section in my Project Page.</p>
+    <p>className="bg-yellow-500 min-h-96"</p>
+</Section>
+<Section className="bg-red-500 min-h-96">
+    <p>This is my SECOND Section in my Project Page.</p>
+    <p>className="bg-red-500 min-h-96"</p>
+</Section> */}
+
+// export default async function BlogPostPage({
+//     params,
+// }: {
+//     params: Promise<{ slug: string }>
+// }) {
+//     const { slug } = await params
+//     const post = await getPost(slug)
+    
+//     return (
+//         <div>
+//       <h1>{post.title}</h1>
+//       <p>{post.content}</p>
+//     </div>
+//   )
+// }
 
 /*
 <Card href='/projects' title='Projects'>

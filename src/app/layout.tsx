@@ -1,16 +1,16 @@
 
+import "./globals.css";
+
 import type { Metadata } from "next";
-
 import Link from 'next/link';
-
-import { Html, Body, Main, Header, Footer } from "@/gui/core";
-import { HeaderTitle, HeaderIcon } from "@/gui/client";
-import { Menu } from "@/gui/widgets";
 
 import { GLOBAL_APP_COPYWRITE, GLOBAL_APP_TITLE, GlobalLayoutClassNames } from '@/global';
 
+import { Header, Footer } from "@/gui/core";
+import { HeaderTitle, HeaderIcon } from "@/gui/client";
+import { Menu } from "@/gui/widgets";
 
-import "./globals.css";
+
 
 export const metadata: Metadata = {
   title: GLOBAL_APP_TITLE, // Tab Text //
@@ -102,15 +102,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <Html lang="en" >
-            <Body >
+        <html lang="en" className="h-full w-full">
+            <body className="min-h-full min-w-full">
                 <RootHeader />
-                <Main >
+                <main className="min-h-screen min-w-full" >
                     {children}
-                </Main>
+                </main>
                 <RootFooter />
-            </Body>
-        </Html >
+            </body>
+        </html >
   );
 }
 

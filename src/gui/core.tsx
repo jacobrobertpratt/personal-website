@@ -1,36 +1,10 @@
 
-import Link from 'next/link'
-import { GLOBAL_APP_COPYWRITE, GLOBAL_APP_TITLE, GlobalLayoutClassNames } from '@/global';
-
 const CoreLayoutStyles = {
-    html: "h-full w-full",
-    body: "min-h-full min-w-full",
-    main: "min-h-screen min-w-full",
-    page: "",
     sect: "flex flex-wrap items-center justify-center",
     head: "sticky top-0 z-50 w-full flex flex-row justify-between",
     foot: ""
 }
 
-export function Html({...props}) {
-    props.className = CoreLayoutStyles.html + " " + props.className
-    return ( <html {...props}>{props.children}</html> );
-}
-
-export function Body({...props}) {
-    props.className = CoreLayoutStyles.body + " " + props.className
-    return ( <body {...props}>{props.children}</body> );
-}
-
-export function Main({...props}) {
-    props.className = CoreLayoutStyles.main + " " + props.className
-    return ( <main {...props}>{props.children}</main> );
-}
-
-export function Page({...props}) {
-    props.className = CoreLayoutStyles.page + " " + props.className
-    return ( <div {...props}>{props.children}</div> );
-}
 
 export function Section({...props}) {
     props.className = CoreLayoutStyles.sect + " " + props.className;
@@ -38,77 +12,15 @@ export function Section({...props}) {
 }
 
 export function Header({...props}) {
-    props.className = CoreLayoutStyles.head + " " + props.className
+    props.className = CoreLayoutStyles.head + " " + props.className;
     return ( <header {...props}>{props.children}</header>);
 }
 
 export function Footer({...props}) {
-    props.className = CoreLayoutStyles.foot + " " + props.className
+    props.className = CoreLayoutStyles.foot + " " + props.className;
     return ( <footer {...props}>{props.children}</footer>);
 }
 
-export function NavList({...props}) {
-    return (
-    <nav {...props}>
-        <ul className="flex space-x-6">
-            {props.children}
-        </ul>
-    </nav>);
-}
-
-/** -------------- ROOT FOOTER -------------- */
-
-// List of links to use -> move to global.tsx (or better just build based on locaiton).
-const links: {href:string,text:string}[] = [
-    { href:'/',text:'Home'},
-    { href:'/projects',text:'Thesis'}
-];
-
-function buildTitleText() {
-    return (
-        <div className="mb-4 md:mb-0 justify-left">
-            <span className="text-xl font-bold">
-                {GLOBAL_APP_TITLE}
-            </span>
-        </div>
-    );
-}
-
-function buildCopyWriteText() {
-    return (
-        <div className="mt-4 md:mt-0 text-sm text-gray-400 text-right">
-            {GLOBAL_APP_COPYWRITE}
-        </div>
-    );
-}
-
-function buildLinkArrayItems({
-    classname
-}: {
-    classname: string
-}) {
-    return (
-        links.map((link,idx:number) => (
-            <li key={idx+1}>
-                <Link href={link.href} className={classname}>{link.text}</Link>
-            </li>
-        ))
-    );
-}
-
-export function RootFooter({...props}) {
-    
-    return (
-        <Footer className={GlobalLayoutClassNames.root.footer.foot}>
-            {buildTitleText()}
-            <NavList className={GlobalLayoutClassNames.root.footer.navl}>
-                {buildLinkArrayItems({classname: GlobalLayoutClassNames.root.footer.link})}
-            </NavList>
-            {/* {buildFooterLinks()} */}
-            {buildCopyWriteText()}
-        </Footer>
-    );
-}
 
 
 // ---------------------- HELPER EXAMPLES ---------------------- //
