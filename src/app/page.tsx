@@ -1,9 +1,15 @@
 
-import { Section, Footer } from '@/gui/core'
+import Image from 'next/image'
+
+import { Section } from '@/gui/core'
 import ProjectCard from '@/gui/components/card';
+
+import HeadShot from '@/../public/orig_headshot.jpg'
 
 
 const temp_text = "The performance of complex recurrent networks heavily relies on the selection of an appropriate activation function. Some established activation functions, known to enhance complex-valued recurrent networks, are chosen based on specific network properties. Exploring alternative approaches to complex activation holds promise for improving the performance of complex recurrent networks. This study introduces a novel activation function that leverages the structural properties of the Hopf bifurcation. The proposed activation function is evaluated using the Mackey Glass and Copy Memory datasets, commonly employed for analyzing recurrent networks. Two experiments are conducted: one to determine an appropriate configuration for the activation function and another to compare it against five established activations. The results indicate that the Hopf bifurcation shows promise as a complex activation, delivering comparable or better performance compared to more established functions.";
+
+
 
 export default function HomePage() {
     return (
@@ -16,6 +22,19 @@ export default function HomePage() {
                     Welcome to my Personal Webpage. 
                 </h1>
             </Section> */}
+            
+            <Section className="bg-orange-500 flex justify-start self-baseline min-h-screen">
+                {/* <Image className="object-cover " src={HeadShot} height={128} alt="Headshot" /> */}
+                    <div className="justify-left">
+                        <h1 className="text-xl font-bold">scroll for</h1>
+                        <div className="flex">
+                            <h1 className="text-5xl font-bold">PROJECTS</h1>
+                            <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
+                                <path d="M19.71,13.29a1,1,0,0,0-1.42,0L13,18.59V3a1,1,0,0,0-2,0V18.59l-5.29-5.3a1,1,0,0,0-1.42,1.42l7,7a1,1,0,0,0,1.42,0l7-7A1,1,0,0,0,19.71,13.29Z" />
+                            </svg>
+                        </div>
+                    </div>
+            </Section>
 
             <Section className="bg-blue-500" >
                 

@@ -45,7 +45,7 @@ export function NavList({...props}) {
 // List of links to use -> move to global.tsx (or better just build based on locaiton).
 const links: {href:string,text:string}[] = [
     { href:'/',text:'Home'},
-    { href:'/projects',text:'Thesis'}
+    { href:'/projects/thesis',text:'Thesis'}
 ];
 
 function buildTitleText() {
@@ -103,7 +103,7 @@ export default function RootLayout({
         <html lang="en" className="h-full w-full">
             <body className="min-h-full min-w-full">
                 <RootHeader />
-                <main className="min-h-screen min-w-full" >
+                <main className="min-h-full min-w-full" >
                     {children}
                 </main>
                 <RootFooter />
