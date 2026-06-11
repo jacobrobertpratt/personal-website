@@ -1,6 +1,6 @@
 
 const CoreLayoutStyles = {
-    sect: "flex flex-wrap items-center justify-center",
+    sect: "flex flex-wrap items-center justify-center min-h-32 bg-inherit",
     head: "sticky top-0 z-50 w-full flex flex-row justify-between",
     foot: ""
 }

@@ -102,11 +102,11 @@ export default function RootLayout({
     return (
         <html lang="en" className="h-full w-full">
             <body className="min-h-full min-w-full">
-                <RootHeader />
-                <main className="min-h-full min-w-full" >
+                {/* <RootHeader /> */}
+                <main className="min-h-screen min-w-full" >
                     {children}
                 </main>
-                <RootFooter />
+                {/* <RootFooter /> */}
             </body>
         </html >
   );
