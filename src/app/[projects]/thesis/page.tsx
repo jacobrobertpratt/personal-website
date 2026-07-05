@@ -26,7 +26,7 @@ export default function ThesisPage() {
                 Overview
             </h1>
             <p className="flex m-2 text-slate-700">
-                This project presents my Master's Thesis while at Iowa State University. My degree was in Computer Science, however my focus included neurscience, machine learning, and dynamical systems, all in a complex-valued sub-space. Most of this work was self taught, which in hindsite was more valuable thany any degree. I began working on my Masters by studying human conginiton, believing the insite gained could reveal some unknown or overlooked method to imporove machine learning models. This involved a well known Neuroscience textbook by Dale Purves (cite/link), which helped me to understand the functionality of neurons and the brain. 
+                This project presents my Master's Thesis while at Iowa State University. My degree was in Computer Science, however my focus included neurscience, machine learning, and dynamical systems, all in a complex-valued sub-space. Most of this work was self taught, which in hindsite was more valuable thany any degree. I began working on my Masters by studying human conginiton, believing the insite gained could reveal some unknown or overlooked method to imporove machine learning models. This involved a well known Neuroscience textbook by Dale Purves (cite/link), which helped me to understand the functionality of neurons and the brain. Further investigation led me to the works of Izhikevich (cite) who proposes that neurons act as resonators and the input frequency plays a critical role in neuronal activation. This leads to activations resembling a limit-cycle and can be modeled 
             </p>
         </section>
 
