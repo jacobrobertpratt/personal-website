@@ -71,3 +71,14 @@ project/
 ├─ .env.example
 ├─ package.json
 └─ README.md
+
+Helpful Notes & Commands:
+ 1) To clear your package manager cache and reinstall the dependencies.
+    
+        npm cache clean --force && npm install
+
+2) Delete temporary build folders and dependencies.
+
+    rm -rf .next node_modules
+
+3) 
