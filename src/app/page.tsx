@@ -3,7 +3,12 @@ import { Section } from '@/gui/core'
 import ProjectCard from '@/gui/components/card';
 
 
-const temp_text = "This project presents my Master's Thesis while at Iowa State University. My degree was in Computer Science, however my focus included neurscience, machine learning, and dynamical systems, all in a complex-valued sub-space.";
+const thesis_text = "This project presents my Master's Thesis while at Iowa State University. \
+My degree was in Computer Science, however my focus included neurscience, machine learning, and dynamical systems, \
+all in a complex-valued sub-space.";
+
+const stuffs_text = "This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. \
+Hopefully there will be more and more stuffs on this later as well.";
 
 export default function HomePage() {
     return (
@@ -31,7 +36,8 @@ export default function HomePage() {
             </Section>
             */}
 
-            <ProjectCard href="/projects/thesis" title="Masters Thesis" >{temp_text}</ProjectCard>
+            <ProjectCard href="/projects/thesis" title="Masters Thesis" >{thesis_text}</ProjectCard>
+            <ProjectCard href="/projects/stuffs" title="Stuffs Page" >{stuffs_text}</ProjectCard>
 
         </div>
     );
