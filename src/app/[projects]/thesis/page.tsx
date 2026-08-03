@@ -1,6 +1,7 @@
 
 import Image from 'next/image';
 import image_neuron_synapse from './images/neuron_synapse_sketch.png'
+import image_neocortex_layers from './images/neocortex_layers_sketch.png'
 
 export default function ThesisPage() {
     return (
@@ -15,7 +16,7 @@ export default function ThesisPage() {
                 <div className="text-slate-900 md:text-5xl text-3xl">
                     Study <b/> of the Hopf Bifurcation as a Complex Activation Function
                 </div>
-                <div className="text-slate-700 md:text-2xl text-xl m-2">
+                <div className="text-slate-700 md:text-2xl text-xl my-4">
                     Summary of M.S. Thesis in Computer Science
                 </div>
             </ul>
@@ -28,8 +29,8 @@ export default function ThesisPage() {
                 Welcome
             </h1>
             
-            <p className="m-2 text-slate-700">
-                I started this research as I do all projects. I selected the most difficult path conceivable and blindly sprinting down it until I get lost and angry. Instead of selecting a well-studied area of machine learning, understanding the sub-discipline, assessing how to improve on an idea, and setting up clear obtainable goals; I proceeded to self-study neuroscience to gain insight into how human cognition works. It seemed logical to study our human mechanism that gives us intelligence, if I were to improve on the desired artificial version. This path led me to the importance of frequencies, recurrency, and synchrony, all of which play a critical role in human intelligence and is barely studied in machine learning, oh joy! But wait! How did I get to this conclusion?
+            <p className="my-4 text-slate-700">
+                I started this research as I do all projects, by selecting the most difficult path conceivable and blindly sprinting down it until I get lost and confused. Instead of selecting a well-studied area of machine learning, understanding the sub-discipline, assessing how to improve on an idea, and setting up clear obtainable goals; I proceeded to self-study neuroscience to gain insight into how human cognition works. It seemed logical to study our human mechanism that gives us intelligence, if I were to improve on the desired artificial version. This path led me to the importance of frequencies, recurrency, and dynamical systems, all of which play a critical role in human intelligence and is barely studied in machine learning, oh joy! But wait! How did I get to this conclusion?
             </p>
 
         </section>
@@ -37,19 +38,19 @@ export default function ThesisPage() {
         {/* MOTIVATION */}
         <section className="max-w-3/4 p-2">
 
-            <h1 className="m-2 text-2xl text-slate-900">
+            <h1 className="my-4 text-2xl text-slate-900">
                 Our Neurological Model
             </h1>
 
-            <p className="m-2 text-slate-700">
+            <p className="my-4 text-slate-700">
                 Join me for a short introduction into neuroscience at the cellular and structural levels, and was gathered mostly from cite: Neuroscience Textbook by Dale Purves, a great introduction textbook.
             </p>
 
-            <p className="m-2 text-slate-700">
+            <p className="my-4 text-slate-700">
                 Biologically, a neuron consists of dendritic and axonal connections, representing the input and output of information, respectively. Neurons transfer information through an electrochemical exchange at these synapses, where neurotransmitters trigger special ion channels to open, producing an influx of ionized molecules into the cell which change the cells voltage potential. Thousands of neurons can be connected to the dendrites of a single neuron. The collective cellular effect is integrated, or summed, when there are simultaneous voltage potential spikes. Once the internal voltage potential of the neuron surpasses a threshold, a chain reaction triggers a current through the axon and releasing neurotransmitters on a different neuron.
             </p>
         
-            <div className='flex flex-wrap items-center justify-center m-2'>
+            <div className='flex flex-wrap items-center justify-center my-4'>
                 <Image
                     className='lg:max-w-1/2'
                     src={image_neuron_synapse}
@@ -57,47 +58,64 @@ export default function ThesisPage() {
                 />
             </div>
 
-            <p className="m-2 text-green-500">
-                Discuss artificial neural networks and compare with biological neurons.
+            <p className="my-4 text-slate-700">
+                The neocortex, responsible for higher-order cognitive functions, is located on the outer-most section and consists of 6-layers, distinguished by their cell and connection types. Connections going into the neocortex occur primarily in layer 4, with layers 2 and 3 containing intercortical connections, and layers 5 and 6 extending out of the neocortex. Columns of neurons traverse between layers, connecting radially aligned groups of cells sharing common functionality. Additionally, interneurons extend horizontally within the same layers, connecting areas with common functionality. The cerebral cortex, which is 90% neocortex, is radially grouped into different functional areas, for example the visual cortex, frontal association cortex, or motor cortex to name a few.
             </p>
 
-            <p className="m-2 text-slate-700">
-                The neocortex, responsible for higher-order brain function, is located on the outer-most section and consists of 6-layers, distinguished by their cell and connection types. Connections going into the neocortex occur primarily in layer 4, with layers 2 and 3 containing intercortical connections, and layers 5 and 6 extending out of the neocortex. Columns of neurons traverse between layers, connecting radially aligned groups of cells sharing common functionality. Additionally, interneurons extend horizontally within the same layers, connecting areas with common functionality. The cerebral cortex, which is 90% neocortex, is radially grouped into different functional areas, for example the visual cortex, frontal association cortex, or motor cortex to name a few.
+            <div className='flex flex-wrap items-center justify-center my-4'>
+                <Image
+                    className='lg:max-w-1/2'
+                    src={image_neocortex_layers}
+                    alt="Neuron & Synapse"
+                />
+            </div>
+
+            <p className="my-4 text-slate-700">
+                Now where is all this intuition I was supposed to find?
             </p>
 
-            <p className="m-2 text-red-500">
-                IMAGE OF NEOCORTEX
+            <p className="my-4 text-slate-700">
+                State of the art artificial neural networks encompass many of these primary functions found above. Biological neurons can be simplified down to a weighted independent variable summation, bounded by a type of threshold function. Each layer in an ANN acts like a single neuron. The weight values represent the strength of the synapse for that particular input, while a non-linear function acts similar to a neuron’s threshold. Biologically, learning occurs via secondary messenger that are released and fed backward to the presynapse, provided the postsynaptic neuron action potential is triggered. Artificially, this occurs across the entire network once the output value is evaluated. They both tend to follows the same principle of strengthening important connections and diminishing unimportant connections.
             </p>
 
-            <p className="m-2 text-green-500">
-                Discuss artificial neural network structure and compare with biological neocortical structure.
+            <p className="my-4 text-slate-700">
+                Structurally, the neocortex shares a common architecture. This can be replicated if only we could account for the sheer size and diversity used biologically. I’m of course referring the hundreds of different types and functions of neurons and the numerous neurotransmitters that exist. The artificial models are diverse in their structures with some commonality based on function. Hence, for machine translation the transformer models have really catapulted the field of machine learning to new heights. Visually, convolutional models have controlled most of the subspace with different down and up sampling structures.
             </p>
 
-            <p className="m-2 text-green-500">
-                Intuition for the use of cycles, frequencies, and syncrony.
-                <div className=''>
-                    <ul className='flex flex-col'>
-                        <a>1) Connetion between structure cycles and neuron frequency</a>
-                        <a>2) Neuron spike timeing and activation threshold limits being separate from the input.</a>
-                        <a>3) Connection between activation pattern and the strength of a neurons connection.</a>
-                        <a>4) "Fire in order - wire in order philosophy."</a>
-                        <a>5) ... synchrony as a naturally occuring phenomenon.</a>
-                    </ul>
-                </div>
+
+            <p className="my-4 text-slate-700">
+                It was about this time I started to observe some interesting patterns.
             </p>
 
-            <p className="m-2 text-green-500">
-                Present the "Dynamical systems in neuroscience" book, Hopf-bifurcations, and current neuron models.
+            <p className="my-4 text-slate-700">
+                First, most connections stay with-in a local area, which implies there are a significant amount recurrent connection, both internal to and between the neocortical layers. Second, “Neurons that fire together wire together,” known as Hebb’s postulate describes that cellular firing is heavily corelated then the cells will strengthen their connections. Stated differently, if the presynaptic neuron aids in firing the postsynaptic neuron, then postsynaptic secondary messengers will signal an increase of neurotransmitters, improving synaptic strength. This implies that neurons are motivated to synchronize across networks. Third, neuron action potentials are all-or-none, meaning they occur completely or not at all. The amplitude of the action potential is independent of the current that invokes it. Cite: Perves – Neuroscience book, pg. 35. It follows that information is encoded in the frequency of activation rather than the amplitude. Finally, most neurons exhibit a firing pattern to their activations. This has both been observed and seems inherent in the system when a recurrent network that strengthen when activations are synchronized would naturally be subject to the phenomenon of synchrony.
             </p>
 
-            <p className="m-2 text-slate-700">
-
+            <p className="my-4 text-slate-700">
+                The machine learning field has had multiple network models introduced with a similar focus. First up, the recurrent neural networks RNN. These networks contain a type of state in addition to the feedforward weight and activation functions. They would “unravel” across the time dimension in a single pass, essentially being treated like a deep neural network DNN. The network would stabilize or explode provided the weights and activation type you choose. Additional problems came with the training method, where gradient updates would explode or vanish as they were propagated backwards in the network. This was known as the exploding-vanishing gradient problem EVGP. Second, spiking neural networks SNN which attempt to better replicate the biological equivalent. SNNs also keep a state of action potentials and are constantly outputting values in what is called a spike train or pulse train. The activation functions vary, but follow a summation and threshold-based approach. SNNs have not gained traction like feed forward networks due to their implementation, interpretation, and training complexities. The third network type, which is similar to SNN, are the reservoir computing networks. These are the Echo State Machine and Liquid State Machines. Both define a state that is fed inputs and produces outputs in the form of temporal train of values. Their major difference is that the Echo State Machine is discrete, while the Liquid State Machine is continuous and real-valued. The Liquid State Machine is presented as more theoretical and considered the state to be like a volume of changing liquid. Of these networks the best performing and adopted was the RNN models, which had the benefit adoption into popular auto-differentiation frameworks.
+            </p>
+            <p className="my-4 text-slate-700">
+                Viewing biological networks as facilitating the organized interaction of information signals allows us to represent our artificial neurons as frequencies and amplitudes. This aligns with our biological understanding. Using complex-values could accomplish this representation and allow current network model architectures to be used. Different approaches using complex-values have been tried and work well on problems involving signal processing, frequency, and oscillations. However, the common approaches to an activation function have generally been adopted from the real-value domain, possibly reducing their potential. 
             </p>
 
-            <p className="m-2 text-slate-700"></p>
+            <p className="my-4 text-slate-700">
+                The text written by Eugene M. Izhikevish titled, “Dynamical Systems in Neuroscience,” focuses on dynamical system that model neuron and other cognitive functions. The author presents a nonlinear two-dimensional system which contains a stable limit-cycle called the Andronov-Hopf Bifurcation, or Hopf bifurcation. Under specific conditions this model can represent the resting and excited states of a spiking neuron.
+            </p>
 
+            <p className="my-4 text-slate-700">
+                But wait! This is where we wanted to end up?
+            </p>
 
-            
+            <p className="my-4 text-slate-700">
+                Honestly, I didn’t really know where I was going. Seems like there are more questions than answers at this point in my research. To summarize my current path: I would need to relearn the properties of complex-values, teach myself dynamical systems and differential equations, develop a backpropagation method for a differential equation solver, implement custom optimization, activation, and metric/loss functions, and all in a machine learning framework I had no experience using. All because complex-valued functions differentiate like a piecewise sack of potatoes and my Nvidia GPU is haunted by René Descartes ...
+            </p>
+            <p className="my-4 text-slate-700">
+                So I got started learning TensorFlow.
+            </p>
+
+            <p className="my-4 text-slate-700">
+                The remainder on this page summarizes the research.
+            </p>
 
         </section>
 
