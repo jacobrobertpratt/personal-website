@@ -3,6 +3,7 @@ import Image from 'next/image';
 import image_neuron_synapse from './images/neuron_synapse_sketch.png'
 import image_neocortex_layers from './images/neocortex_layers_sketch.png'
 import image_dyn_sys_neuro from './images/image_dyn_sys_neuro_sci.jpeg'
+import image_neuro_purves from './images/neuroscience_dale_purves.jpg'
 
 export default function ThesisPage() {
 	return (
@@ -47,6 +48,14 @@ export default function ThesisPage() {
 				Join me for a short introduction into neuroscience at the cellular and structural levels, and was gathered mostly from cite: Neuroscience Textbook by Dale Purves, a great introduction textbook.
 			</p>
 
+						<div className='flex flex-wrap items-center justify-center my-4'>
+				<Image
+					className='lg:max-w-1/2'
+					src={image_neuro_purves}
+					alt="Neuroscience Textbook Image"
+				/>
+			</div>
+
 			<p className="my-4 text-slate-700">
 				Biologically, a neuron consists of dendritic and axonal connections, representing the input and output of information, respectively. Neurons transfer information through an electrochemical exchange at these synapses, where neurotransmitters trigger special ion channels to open, producing an influx of ionized molecules into the cell which change the cells voltage potential. Thousands of neurons can be connected to the dendrites of a single neuron. The collective cellular effect is integrated, or summed, when there are simultaneous voltage potential spikes. Once the internal voltage potential of the neuron surpasses a threshold, a chain reaction triggers a current through the axon and releasing neurotransmitters on a different neuron.
 			</p>
@@ -67,7 +76,7 @@ export default function ThesisPage() {
 				<Image
 					className='lg:max-w-1/2'
 					src={image_neocortex_layers}
-					alt="Neuron & Synapse"
+					alt="Six Neocortex Layers"
 				/>
 			</div>
 
@@ -107,7 +116,7 @@ export default function ThesisPage() {
 				<Image
 					className='lg:max-w-1/2'
 					src={image_dyn_sys_neuro}
-					alt="Neuron & Synapse"
+					alt="Dynamical Systems in Neuroscience"
 				/>
 			</div>
 
@@ -134,11 +143,19 @@ export default function ThesisPage() {
 		<section className="max-w-3/4 p-2">
 
 			<h1 className="my-4 text-2xl text-slate-900">
-				Challenges
+				Project Challenges
 			</h1>
 
 			<p className="my-4 text-slate-700">
+				A primary challenge this project faced was inherent in complex-values. First, complex-valued functions are not differentiable in the common sense, and an alternative calculus is needed. This poses a problem in machine learning because differentiation is how gradiant changes are determined. Additionally, the main feature of these major frameworks is their automatic differentiation, so any uncommon differentation will require customization. You know that long painful road I mentioned before? This is what it looks like.
+			</p>
 
+			<p className="my-4 text-slate-700">
+				Complex-valued functions are not differentiable but are sudo-differentiable using Wertinger calculus. 
+			</p>
+
+			<p className="my-4 text-slate-700">
+				The choice to use TensorFlow / Keras was because they allowed low-level customization while maintainging high-level training functionality, and are widely adopted across research and industry. At this time, PyTorch was just becoming popular. The TensorFlow implementation used only expected real-values so the built-in optimization, initialization, and general models needed to be rewritten.
 			</p>
 			
 		</section>
