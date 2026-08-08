@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import image_neuron_synapse from './images/neuron_synapse_sketch.png'
 import image_neocortex_layers from './images/neocortex_layers_sketch.png'
+import image_dyn_sys_neuro from './images/image_dyn_sys_neuro_sci.jpeg'
 
 export default function ThesisPage() {
 	return (
@@ -102,6 +103,14 @@ export default function ThesisPage() {
 				The text written by Eugene M. Izhikevish titled, “Dynamical Systems in Neuroscience,” covers dynamical systems which model neurons and other cognitive functions. One of these is a two-dimensional dynamical system that contains a stable limit-cycle called the Andronov-Hopf Bifurcation, or Hopf bifurcation, and represents the resting and excited states of a spiking neuron exceptionally well.
 			</p>
 
+			<div className='flex flex-wrap items-center justify-center my-4'>
+				<Image
+					className='lg:max-w-1/2'
+					src={image_dyn_sys_neuro}
+					alt="Neuron & Synapse"
+				/>
+			</div>
+
 			<p className="my-4 text-slate-700">
 				But wait! This is where we wanted to end up?
 			</p>
@@ -109,6 +118,8 @@ export default function ThesisPage() {
 			<p className="my-4 text-slate-700">
 				Honestly, I didn’t really know where I was going. Seems like there are more questions than answers at this point in my research. To summarize my current path: I would need to relearn the properties of complex-values, teach myself dynamical systems and differential equations, develop a backpropagation method for a differential equation solver, implement custom optimization, activation, and metric/loss functions, and all in a machine learning framework I had no experience using. All because complex-valued functions differentiate like a piecewise sack of potatoes and my Nvidia GPU is haunted by René Descartes ...
 			</p>
+
+			
 			<p className="my-4 text-slate-700">
 				So I got started learning TensorFlow.
 			</p>
