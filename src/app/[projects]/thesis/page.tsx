@@ -138,10 +138,10 @@ export default function ThesisPage() {
 			<p className="my-4 text-slate-700"></p>
 		</section>
 
-		{/* CONCLUSION */}
+		{/* DISCUSSION */}
 		<section className="max-w-3/4 p-2">
 			<h1 className="my-4 text-2xl text-slate-900">
-				Conclusion
+				Discussion
 			</h1>
 			<p className="my-4 text-slate-700"></p>
 		</section>
