@@ -2,7 +2,7 @@
 // tailwind.config.js
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // 'class', 'media', or true
   theme: {
     extend: {},
   },

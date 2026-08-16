@@ -3,13 +3,9 @@ import Image from 'next/image';
 import image_dyn_sys_neuro from './images/image_dyn_sys_neuro_sci.jpeg';
 
 import { Latex } from '@/latex';
+import { CodeBlock } from '@/code'
 
-import { JSX, Fragment } from 'react'
-import { jsx, jsxs } from 'react/jsx-runtime';
-import { codeToHast, codeToHtml } from 'shiki';
-import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
-
-const test_python_code_1 = String.raw`
+const test_python_code_example_1 = String.raw`
 # Create internal hopf cell (represents a single timestep )
 if self.cell is None:
 	self.cell = HopfRNNCellTheta(
@@ -24,7 +20,7 @@ if self.cell is None:
 	)
 `;
 
-const test_python_code_2 = String.raw`
+const test_python_code_examlpe_2 = String.raw`
 def call( self , inputs , states , training = False ):
 	z = states[0] if tf.nest.is_nested( states ) else states
 	x = inputs[0] if tf.nest.is_nested( inputs ) else inputs
@@ -49,88 +45,12 @@ def call( self , inputs , states , training = False ):
 	return y_t , z_t
 	`;
 
-async function Code({ ...props }) {
-
-	let code_string = String.raw``;
-
-	if (typeof props.children == 'string') {
-		code_string = props.children;
-	}
-
-	const html = await codeToHtml(
-		code_string,
-		{
-			lang: 'python',
-			theme: 'laserwave'
-		}
-	);
-
-	const hast = await codeToHast(
-		code_string,
-		{
-			lang: 'python',
-			theme: 'laserwave'
-		}
-	);
-	
-	// <button className="absolute top-3 right-3 z-10 text-green-700 hover:text-black transition-colors">
-	// 	<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-	// 		<path
-	// 			strokeLinecap="round"
-	// 			strokeLinejoin="round"
-	// 			d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-	// 		/>
-	// 	</svg>
-	// </button>
-
-	// 	<div className="w-full mx-auto my-6 overflow-hidden rounded-md bg-inherit shadow-md border border-slate-200">
-	// 	<div className="p-2 overflow-x-auto">
-	// 		<Code></Code>
-	// 	</div>
-	// </div>
-
-	// // Extract the elements from the document body
-	// const htmlElement: HTMLElement | null = doc.body.firstElementChild as HTMLElement;
-	// console.log('hast.childre = ',typeof hast, hast, hast.children[0]['properties']['style'])
-
-	// hast.children[0]['properties']['style'] = 'background-color:#27212e;color:#ffffff';
-	// console.log('hast.childre = ',typeof hast, hast, hast.children[0]['properties']['style'])
-
-	// hast.children[0]['properties']['class'] = 'shiki laserwave px-4 opacity-90 rounded-2xl';
-	// console.log('hast.childre = ',typeof hast, hast, hast.children[0]['properties']['class'])
-
-	return (
-		toJsxRuntime(
-			hast,
-			{
-				Fragment,
-				jsx,
-				jsxs,
-				components: {
-					// your custom `pre` element
-					// pre: props => <pre data-custom-codeblock {...props} />
-					// pre: props => <pre {...props} />
-				}
-			}
-		) as JSX.Element
-	);
-
-	// console.log('test:',typeof test);
-	
-	// return (
-	// 	<div
-	// 		className={props.className}
-	// 		dangerouslySetInnerHTML={{__html: html}}
-	// 	/>
-	// );
-}
-
 export default function ThesisPage() {
 	
 	const test_latex_string = String.raw`\text{This is a test string ... and Math:  } \frac{a}{b} 2`;
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-32 bg-inherit">
+		<div className="flex flex-col items-center justify-center min-h-32">
 			
 			{/* TITLE */}
 			<section className="w-5/7 my-10 p-2">
@@ -291,9 +211,10 @@ export default function ThesisPage() {
 					Working in the complex-valued domain required several custom implementations. A custom recurrent-network calling function was created as a wrapper around the standard tf.keras.backend.rnn function.
 				</p>
 
-				<div className="">
-					<button className="absolute top-3 right-3 z-10 text-green-700 hover:text-black transition-colors">
-						<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+				{/* Current Codeblock configuration */}
+				<div className="border border-slate-400 rounded-lg bg-[#e9e9e9]">
+					<button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
+						<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 							<path
 								strokeLinecap="round"
 								strokeLinejoin="round"
@@ -301,7 +222,7 @@ export default function ThesisPage() {
 							/>
 						</svg>
 					</button>
-					<Code>{test_python_code_2}</Code>
+					<CodeBlock className="text-sm">{test_python_code_examlpe_2}</CodeBlock>
 				</div>
 
 				<p className="my-4 text-slate-700">
