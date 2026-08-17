@@ -17,10 +17,10 @@ import MenuIcon from "@/../public/menu-icon.svg"
 
 let isActive = false;
 
-const pathname_to_titles = {
-    '/':'HOME',
-    '/projects':'PROJECTS'
-}
+// const pathname_to_titles: {string: string} = {
+//     '/':'HOME',
+//     '/projects':'PROJECTS'
+// }
 
 const WidgetLayoutStyles = {
     button: ""
@@ -59,19 +59,22 @@ export function ClickButton({...props}) {
 
 }
 
-export function HeaderTitle({...props}) {
+// export function HeaderTitle({...props}) {
 
-    const pathname: string = usePathname();
-    const title: string = pathname_to_titles[pathname]; // TODO: need to fix red squiggle.
+//     // const pathname: string = usePathname();
+//     // let title: string = "";
+//     // if (pathname in pathname_to_titles) {
+//     //     title = pathname_to_titles[pathname]; // TODO: need to fix red squiggle.
+//     // }
     
-    props.className = HeaderTitleStyle.classname + " " + props.className;
-    return (
-        <h1 className="text-4xl font-bold">
-            {title}
-        </h1>
-    );
+//     props.className = HeaderTitleStyle.classname + " " + props.className;
+//     return (
+//         <h1 className="text-4xl font-bold">
+//             {title}
+//         </h1>
+//     );
     
-}
+// }
 
 export function HeaderIcon({...props}) {
     // Should change between 

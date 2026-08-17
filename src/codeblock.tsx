@@ -5,6 +5,13 @@ import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 
 import { codeToHast } from 'shiki';
 
+import type { Root, RootContent } from 'hast';
+
+/*
+WARNING: Might not want to have this async since it is an HTML tag-class
+	There should inherently be syncronous functions ... but maybe not on the server side?
+	Unsure ...
+ */
 export async function CodeBlock(
 	{...props},
 	language: string='python'
@@ -18,10 +25,10 @@ export async function CodeBlock(
 	if (("className" in props)&& (typeof props.className === 'string')) { className = " " + props.className; }
 
 	// Generate HTML Abstract Syntax Tree -> HAST
-	let hast = await codeToHast(
+	const hast: Root = await codeToHast(
 		code_string,
 		{
-			lang: language,
+			lang: 'python',
 			themes: {
 				light: 'github-light',
 				dark: 'github-dark'
@@ -31,9 +38,11 @@ export async function CodeBlock(
 		}
 	);
 
+	console.log('hast:',hast);
+
 	// Update class and style properties of 'pre' to manipulate codeblock functionality
 	if ("children" in hast) {		
-		let child = hast.children[0];
+		let child: RootContent = hast.children[0];
 		if ("tagName" in child) {
 			if (child.tagName === 'pre') {
 				// Manipulate className information //

@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { GLOBAL_APP_COPYWRITE, GLOBAL_APP_TITLE, GlobalLayoutClassNames } from '@/global';
 
 import { Header, Footer } from "@/gui/core";
-import { HeaderTitle, HeaderIcon } from "@/gui/client";
+import { HeaderIcon } from "@/gui/client";
 import { Menu } from "@/gui/widgets";
 
 export const metadata: Metadata = {
@@ -25,7 +25,6 @@ function RootHeader({...props}) {
     return (
         <Header className={RootLayoutStyles.head}>
             <HeaderIcon />
-            <HeaderTitle />
             <Menu />
         </Header>
     );

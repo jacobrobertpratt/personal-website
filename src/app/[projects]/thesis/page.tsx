@@ -3,7 +3,8 @@ import Image from 'next/image';
 import image_dyn_sys_neuro from './images/image_dyn_sys_neuro_sci.jpeg';
 
 import { Latex } from '@/latex';
-import { CodeBlock } from '@/code'
+import { CodeBlock } from '@/codeblock'
+import { Reference } from '@/citation'
 
 const test_python_code_example_1 = String.raw`
 # Create internal hopf cell (represents a single timestep )
@@ -42,15 +43,15 @@ def call( self , inputs , states , training = False ):
 
 	z_t = [ z_t ] if tf.nest.is_nested( states ) else z_t
 
-	return y_t , z_t
-	`;
+	return y_t , z_t`;
 
-export default function ThesisPage() {
+
+export default async function ThesisPage() {
 	
 	const test_latex_string = String.raw`\text{This is a test string ... and Math:  } \frac{a}{b} 2`;
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-32">
+		<div className="flex flex-col items-center justify-center min-h-32 pb-60">
 			
 			{/* TITLE */}
 			<section className="w-5/7 my-10 p-2">
@@ -324,7 +325,7 @@ export default function ThesisPage() {
 					References
 				</h1>
 				
-				<p id='ref_neuro_dale_purves' className="my-4 text-slate-700">
+				{/* <p id='ref_neuro_dale_purves' className="my-4 text-slate-700">
 					[1] Neuroscience by Dale Purves
 				</p>
 
@@ -334,8 +335,26 @@ export default function ThesisPage() {
 
 				<p className="my-4 text-slate-700">
 					[3] S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087
-
 				</p>
+
+				<div className="flex flex-row w-full h-auto">
+					<div className="justify-left pr-2">[1]</div>
+					<div className="text-left pl-2">{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}</div>
+				</div>
+
+				<Reference>
+					{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}
+				</Reference> */}
+
+				<Reference>
+					{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}
+				</Reference>
+
+				{/* Test with other stuff ... or move on and get this page done ...  */}
+
+				<Reference>
+					{String.raw`K. O’Shea and R. Nash, “An Introduction to Convolutional Neural Networks,” Dec. 02, 2015, arXiv: arXiv:1511.08458. doi: 10.48550/arXiv.1511.08458.`}
+				</Reference>
 
 			</section>
 
@@ -343,3 +362,4 @@ export default function ThesisPage() {
 
 	);
 }
+

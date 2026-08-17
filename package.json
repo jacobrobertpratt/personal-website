@@ -10,6 +10,7 @@
     "reset": "rm -rf node_modules package-lock.json && npm cache clean --force && npm install"
   },
   "dependencies": {
+    "@citation-js/plugin-csl": "^0.8.2",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.2.6",
