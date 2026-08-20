@@ -1,6 +1,7 @@
 
 import Image from 'next/image';
 import image_dyn_sys_neuro from './images/image_dyn_sys_neuro_sci.jpeg';
+import image_iso_phase_plane from './images/iso_phase_planes_crpd.png';
 
 import { Latex } from '@/latex';
 import { CodeBlock } from '@/codeblock'
@@ -69,7 +70,7 @@ export default async function ThesisPage() {
 			{/* INTRODUCTION */}
 			<section className="w-5/7 p-2">
 
-				<h1 className="my-4 text-2xl text-slate-900">
+				<h1 className="text-2xl text-slate-900">
 					Introduction
 				</h1>
 
@@ -77,52 +78,53 @@ export default async function ThesisPage() {
 					This work summarizes my master’s thesis in Computer Science which investigated the feasibility of a complex-valued activation function in recurrent neural networks. The recurrent and oscillatory differences between biological neurons and artificial networks was the driving motivation of the study. The proposed Hopf activation function is based on the Andronov–Hopf bifurcation, whose limit-cycle dynamics provide a natural representation of amplitude and phase in the complex domain.
 				</p>
 
+				<Image
+					src={image_iso_phase_plane}
+					alt="Dyn Sys Neuro - Text"
+					className="lg:float-right lg:w-1/3 rounded-lg"
+				/>
+
 				<p className="my-4 text-slate-700">
 					Implementing this activation function required overcoming several challenges with complex-valued functions, automatic differentiation, and the use of an ODE solver within existing machine-learning frameworks. The function was evaluated using a complex-valued RNN on two datasets, the Mackey–Glass and Copy Memory, and compared with other established complex-valued activation functions. Results showed that the Hopf activation is feasible when appropriate stability constraints are placed on the input coefficients. The configurations evaluated performed equivalent or better than the established functions, particularly on the Mackey–Glass dataset.
 				</p>
 
 				<p className="my-4 text-slate-700">
 					Overall, this work demonstrates the potential for using the Hopf-bifurcation as a complex-valued activation function. However, there were practical limitations in ODE solver stability, computational cost, and network design. Further research could better isolate the benefits of the Hopf dynamics from those of the ODE solver, allow evaluation on more established network architectures, and determine its applicability to a broader range of problems.
-				</p>				
-				
-			</section>
+				</p>
 
-			{/* MOTIVATION */}
-			<section className="text-justify w-5/7 p-2">
 
-				<h1 className="my-4 text-2xl text-slate-900">
+
+
+				<h1 className="mt-12 text-2xl text-slate-900">
 					Motivation
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					When studying neuroscience, a significant difference becomes apparent between biological and artificial neural networks. As described in Neuroscience by Dale Purves et al. <a href='#ref_neuro_dale_purves' className='text-green-500'>[cite]</a>, biological networks are highly recurrent, with information represented partly through the timing and frequency of neuronal firing. Conventional artificial networks instead transform weighted inputs through nonlinear activation functions, with neuronal frequency and phase having no direct analogue in most architectures.
+					When studying neuroscience, a significant difference becomes apparent between biological and artificial neural networks. As described in Neuroscience by Dale Purves et al.
+					<a href='#ref_neuro_dale_purves' className='text-red-500'> [cite]</a>
+					, biological networks are highly recurrent, with information represented partly through the timing and frequency of neuronal firing. Conventional artificial networks instead transform weighted inputs through nonlinear activation functions, with neuronal frequency and phase having no direct analogue in most architectures.
 				</p>
 
-				
 				<p className="my-4 text-slate-700">
-					Dynamical Systems in Neuroscience by Eugene M. Izhikevich [cite] provides another way to view neuronal behavior, modeling neurons as dynamical systems capable of oscillation and repetitive firing. These behaviors naturally involve frequency, amplitude, and phase, which can be represented compactly using complex values.
+					Dynamical Systems in Neuroscience by Eugene M. Izhikevich 
+					<a href='#ref_neuro_dale_purves' className='text-red-500'> [cite] </a>
+					provides another way to view neuronal behavior, modeling neurons as dynamical systems capable of oscillation and repetitive firing. These behaviors naturally involve frequency, amplitude, and phase, which can be represented compactly using complex values.
 				</p>
 
-				<Image
-					src={image_dyn_sys_neuro}
-					alt="Dyn Sys Neuro - Text"
-					className="float-right m-2 w-auto rounded-lg"
-				/>
+
 
 				<p className="my-4 text-slate-700">
 					Complex-valued neural networks have been explored previously, with activation functions commonly adapted from real-valued networks or applied separately to real and imaginary components. However, these approaches may not take full advantage of complex-valued dynamics. A neuron model designed specifically around oscillation could instead use complex values to represent amplitude and phase while preserving much of the structure of existing neural-network architectures.
 				</p>
 
+
 				<p className="my-4 text-slate-700">
 					Complex-valued mathematics is already fundamental to signal processing, filtering, communications, and related fields through techniques such as Fourier analysis. Despite its usefulness for representing oscillatory behavior, it remains relatively uncommon in mainstream machine learning. This suggests an opportunity to combine dynamical neuron models with complex-valued neural networks to more directly represent the temporal behavior observed in biological systems.
 				</p>
 
-			</section>
 
-			{/* CHALLENGES */}
-			<section className="w-5/7 p-2">
 
-				<h1 className="my-4 text-2xl text-slate-900">
+				<h1 className="mt-12 text-2xl text-slate-900">
 					Challenges
 				</h1>
 
@@ -138,12 +140,10 @@ export default async function ThesisPage() {
 					Finally, practical implementation remains more difficult than with real-valued networks. Machine-learning frameworks provide varying levels of support for complex tensors, and some layers, operations, and hardware optimizations remain oriented toward real-valued computation. Complex arithmetic also carries additional computational and memory costs. Together, these challenges make complex-valued networks more difficult to design and train, even when complex representations are well suited to the underlying problem.
 				</p>
 
-			</section>
 
-			{/* BACKGROUND */}
-			<section className="w-5/7 p-2">
 
-				<h1 className="my-4 text-2xl text-slate-900">
+
+				<h1 className="mt-12 text-2xl text-slate-900">
 					Background
 				</h1>
 
@@ -163,11 +163,9 @@ export default async function ThesisPage() {
 					The Hopf bifurcation connects these concepts by describing a transition between a fixed point and periodic oscillation as a system parameter changes. This makes it particularly relevant to neuronal dynamics: a resting neuron can be associated with a stable state, while repetitive firing can be represented by oscillatory limit-cycle behavior. Your uploaded thesis uses this structure directly, defining a dynamical system in the complex domain whose evolution follows the Hopf normal form, thereby giving the proposed activation function a limit-cycle structure.
 				</p>
 
-			</section>
 
-			{/* ACTIVATION FUNCTION */}
-			<section className="w-5/7 p-2">
-				<h1 className="my-4 text-2xl text-slate-900">
+
+				<h1 className="mt-12 text-2xl text-slate-900">
 					The Activation Function
 				</h1>
 
@@ -191,12 +189,11 @@ export default async function ThesisPage() {
 					The resulting Hopf activation combines properties that are normally separated in conventional activation functions: nonlinear amplitude control, stable recurrent behavior, and continuous phase evolution. Simulations in the thesis demonstrate transitions between fixed-point and limit-cycle behavior while also showing that changes to the imaginary coefficients alter the frequency and angular evolution of the state. This allows the activation to operate as a complex-valued dynamical process rather than simply a static transformation of its input.
 				</p>
 
-			</section>
 
-			{/* IMPLEMENTATION */}
-			<section className="w-5/7 p-2">
+
+
 				
-				<h1 className="my-4 text-2xl text-slate-900">
+				<h1 className="mt-12 text-2xl text-slate-900">
 					Implementation
 				</h1>
 
@@ -264,13 +261,13 @@ export default async function ThesisPage() {
 					Experiments were conducted on an AMD Ryzen 9 7950X 16-Core processor at 4.50 GHz with 64 GB of RAM running Windows 11 Pro. GPU computations used an NVIDIA RTX A4500 with CUDA 11.8 and TensorFlow 2.10.0 with Grappler optimization.
 				</p>
 
-			</section>
 
-			{/* RESULTS */}
-			<section className="w-5/7 p-2">
-				<h1 className="my-4 text-2xl text-slate-900">
+
+
+				<h1 className="mt-12 text-2xl text-slate-900">
 					Results
 				</h1>
+
 				<p className="my-4 text-slate-700">
 					Different network and dataset sizes were tested against multiple Hopf activation parameter configurations to evaluate the function's feasibility and performance. The parameter experiments evaluated seven configurations of the initial state (\gamma_t_0), linear coefficient (\alpha), and nonlinear coefficient (\beta). Each configuration was compared against a Base model using the identity activation, while the two best Hopf configurations were later compared against established complex-valued activation functions, including CpxCard, splitReLU, modReLU, SigLog, and (\tanh). In total, 168 models and 4,368 training runs were evaluated across the Mackey–Glass and Copy Memory datasets.
 				</p>
@@ -291,12 +288,10 @@ export default async function ThesisPage() {
 					Overall, the experiments demonstrated the feasibility of using the Hopf bifurcation as a trainable complex-valued activation function, with C(2) and C(4) emerging as the most effective configurations tested. The results were particularly promising for the continuous, nonlinear temporal relationships of Mackey–Glass, while also showing that performance depends strongly on network topology, dataset characteristics, and the placement of learnable parameters within the Hopf activation.
 				</p>
 
-			</section>
 
-			{/* DISCUSSION */}
-			<section className="w-5/7 p-2">
 
-				<h1 className="my-4 text-2xl text-slate-900">
+
+				<h1 className="mt-12 text-2xl text-slate-900">
 					Discussion
 				</h1>
 
@@ -316,12 +311,10 @@ export default async function ThesisPage() {
 					Future work includes evaluating the Hopf activation in more established architectures, particularly unitary RNNs, exploring alternative parameter mappings, and testing additional datasets. Extending the Hopf bifurcation into higher-dimensional systems may also provide greater control over activation behavior. Overall, the work demonstrates that a constrained Hopf bifurcation can function as a trainable complex-valued activation, but additional experimentation is needed to better understand its properties, computational costs, and applicability to other neural-network architectures.
 				</p>
 
-			</section>
 
-			{/* REFERENCES */}
-			<section className="w-5/7 p-2">
 
-				<h1 className="my-4 text-2xl text-slate-900">
+
+				<h1 className="mt-12 text-2xl text-slate-900">
 					References
 				</h1>
 				
@@ -346,17 +339,23 @@ export default async function ThesisPage() {
 					{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}
 				</Reference> */}
 
-				<Reference>
+				<Reference className="my-4">
 					{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}
 				</Reference>
 
 				{/* Test with other stuff ... or move on and get this page done ...  */}
 
-				<Reference>
+				<Reference className="my-4">
 					{String.raw`K. O’Shea and R. Nash, “An Introduction to Convolutional Neural Networks,” Dec. 02, 2015, arXiv: arXiv:1511.08458. doi: 10.48550/arXiv.1511.08458.`}
 				</Reference>
 
 			</section>
+
+			<Image
+				src={image_dyn_sys_neuro}
+				alt="Dyn Sys Neuro - Text"
+				className="float-left mr-6 rounded-lg"
+			/>
 
 		</div>
 

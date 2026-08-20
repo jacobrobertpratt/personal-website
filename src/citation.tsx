@@ -40,9 +40,10 @@ export function Reference(
 
 	// Get unique id
 	const index = ref_id_list.indexOf(unique_ref_id) + 1;
-
+	const className="flex flex-row w-full h-auto " + props.className;
+	
 	return (
-		<div id={unique_ref_id} className="flex flex-row w-full h-auto">
+		<div id={unique_ref_id} className={className}>
 			<div className="justify-left pr-2">{"["+String(index)+"]"}</div>
 			<div className="text-left pl-2">{props.children}</div>
 		</div>
