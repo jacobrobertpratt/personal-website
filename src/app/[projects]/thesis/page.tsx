@@ -74,15 +74,15 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					This work presents a summarized version of a master’s thesis in Computer Science investigating the feasibility of a biologically motivated, complex-valued activation function for recurrent neural networks. Motivated by differences between biological and artificial neural networks, particularly the recurrent and oscillatory behavior of biological neurons, the work explores whether a dynamical system can provide an alternative to conventional static activation functions. The proposed Hopf activation function is based on the Andronov–Hopf bifurcation, whose limit-cycle dynamics provide a natural representation of amplitude and phase in the complex domain.
+					This work summarizes my master’s thesis in Computer Science which investigated the feasibility of a complex-valued activation function in recurrent neural networks. The recurrent and oscillatory differences between biological neurons and artificial networks was the driving motivation of the study. The proposed Hopf activation function is based on the Andronov–Hopf bifurcation, whose limit-cycle dynamics provide a natural representation of amplitude and phase in the complex domain.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					Implementing the activation required overcoming several challenges associated with complex-valued machine learning and the use of an ODE solver within existing machine-learning frameworks. Different parameter configurations were evaluated using a complex-valued RNN on the Mackey–Glass and Copy Memory datasets and compared with established complex-valued activation functions. The results demonstrated that the Hopf activation is feasible when appropriate stability constraints are placed on its coefficients. These configurations performed comparably to or better than the established activation functions tested, particularly on the Mackey–Glass dataset.
+					Implementing this activation function required overcoming several challenges with complex-valued functions, automatic differentiation, and the use of an ODE solver within existing machine-learning frameworks. The function was evaluated using a complex-valued RNN on two datasets, the Mackey–Glass and Copy Memory, and compared with other established complex-valued activation functions. Results showed that the Hopf activation is feasible when appropriate stability constraints are placed on the input coefficients. The configurations evaluated performed equivalent or better than the established functions, particularly on the Mackey–Glass dataset.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					Overall, the work demonstrates the potential for using dynamical systems and limit-cycle behavior as complex-valued neural-network activations while identifying practical limitations in numerical stability, computational cost, and network design. Further research is required to isolate the benefits of the Hopf dynamics from those of the ODE solver, evaluate the activation in more established neural-network architectures, and determine its applicability to a broader range of problems.
+					Overall, this work demonstrates the potential for using the Hopf-bifurcation as a complex-valued activation function. However, there were practical limitations in ODE solver stability, computational cost, and network design. Further research could better isolate the benefits of the Hopf dynamics from those of the ODE solver, allow evaluation on more established network architectures, and determine its applicability to a broader range of problems.
 				</p>				
 				
 			</section>
