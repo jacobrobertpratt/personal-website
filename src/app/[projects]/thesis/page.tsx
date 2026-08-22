@@ -100,18 +100,13 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					When studying neuroscience, a significant difference becomes apparent between biological and artificial neural networks. As described in Neuroscience by Dale Purves et al.
-					<a href='#ref_neuro_dale_purves' className='text-red-500'> [cite]</a>
-					, biological networks are highly recurrent, with information represented partly through the timing and frequency of neuronal firing. Conventional artificial networks instead transform weighted inputs through nonlinear activation functions, with neuronal frequency and phase having no direct analogue in most architectures.
+					While studying "Neuroscience" by Dale Purves et al. <a href='#ref_neuro_dale_purves' className='text-red-500'> [cite]</a>, a significant difference between biological and artificial neural networks became apparent. That is, biological networks are highly recurrent with information represented as frequency of neuronal firing. Conventional artificial networks instead transform weighted inputs through nonlinear activation functions, with neuronal frequency and phase having no direct analogue in most architectures.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					Dynamical Systems in Neuroscience by Eugene M. Izhikevich 
-					<a href='#ref_neuro_dale_purves' className='text-red-500'> [cite] </a>
-					provides another way to view neuronal behavior, modeling neurons as dynamical systems capable of oscillation and repetitive firing. These behaviors naturally involve frequency, amplitude, and phase, which can be represented compactly using complex values.
+					Dynamical Systems in Neuroscience by Eugene M. Izhikevich <a href='#ref_neuro_dale_purves' className='text-red-500'> [cite] </a>
+					provides another method to model neuronal behavior, as dynamical systems capable of oscillation and repetitive firing. These models involve frequency, amplitude, and phase, and can be represented compactly with complex values.
 				</p>
-
-
 
 				<p className="my-4 text-slate-700">
 					Complex-valued neural networks have been explored previously, with activation functions commonly adapted from real-valued networks or applied separately to real and imaginary components. However, these approaches may not take full advantage of complex-valued dynamics. A neuron model designed specifically around oscillation could instead use complex values to represent amplitude and phase while preserving much of the structure of existing neural-network architectures.
