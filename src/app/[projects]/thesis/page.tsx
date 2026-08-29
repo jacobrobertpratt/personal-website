@@ -2,6 +2,9 @@
 import Image from 'next/image';
 import image_dyn_sys_neuro from './images/image_dyn_sys_neuro_sci.jpeg';
 import image_iso_phase_plane from './images/iso_phase_planes_crpd.png';
+import image_unstable_phase_space from './images/dyn_sys_example_unstable_fixed_point_phase_space.png'
+import image_stable_fixed_point from './images/dyn_sys_stable_fixed_point.png'
+import image_limit_cycle from './images/dyn_sys_limit_cycle_example.png'
 
 import { Latex } from '@/latex';
 import { CodeBlock } from '@/codeblock'
@@ -100,22 +103,26 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					While studying "Neuroscience" by Dale Purves et al. <a href='#ref_neuro_dale_purves' className='text-red-500'> [cite]</a>, a significant difference between biological and artificial neural networks became apparent. That is, biological networks are highly recurrent with information represented as frequency of neuronal firing. Conventional artificial networks instead transform weighted inputs through nonlinear activation functions, with neuronal frequency and phase having no direct analogue in most architectures.
+					While studying "Neuroscience" by Dale Purves et al. 
+					<a href='#ref_purves_1' className='text-slate-500 hover:text-black'> [1]</a>, 
+					an obvious difference between biological and artificial neural networks became apparent. That is, biological networks are highly recurrent with information encoded as frequencies of neuronal firing, while artificial networks transform weighted inputs via nonlinear activation functions. The neuronal frequency and phase having no direct analogue in most architectures.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					Dynamical Systems in Neuroscience by Eugene M. Izhikevich <a href='#ref_neuro_dale_purves' className='text-red-500'> [cite] </a>
+					Dynamical Systems in Neuroscience by Eugene M. Izhikevich 
+					<a href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2] </a>
 					provides another method to model neuronal behavior, as dynamical systems capable of oscillation and repetitive firing. These models involve frequency, amplitude, and phase, and can be represented compactly with complex values.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					Complex-valued neural networks have been explored previously, with activation functions commonly adapted from real-valued networks or applied separately to real and imaginary components. However, these approaches may not take full advantage of complex-valued dynamics. A neuron model designed specifically around oscillation could instead use complex values to represent amplitude and phase while preserving much of the structure of existing neural-network architectures.
+					Artificial networks using complex-values has previously been explored. Activation functions used in these networks are adapted from functions used in real-valued networks. Adaptations include applying a real-valeud activations independently to the real and imaginary components or amplitude and phase elements. A small fraction stay with-in the complex domian, and even those approaches don't take full advantage of complex-valued dynamics. One goal of this work was to stay completely with-in the complex subspace.
 				</p>
 
 
 				<p className="my-4 text-slate-700">
-					Complex-valued mathematics is already fundamental to signal processing, filtering, communications, and related fields through techniques such as Fourier analysis. Despite its usefulness for representing oscillatory behavior, it remains relatively uncommon in mainstream machine learning. This suggests an opportunity to combine dynamical neuron models with complex-valued neural networks to more directly represent the temporal behavior observed in biological systems.
+					Complex-valued mathematics is fundamental to many technologies we take for granted today, including signal processing, filtering, communication, and digital compression. Despite its usefulness, it remains relatively uncommon in mainstream machine learning primarily due to it being mathematically unintuitive and lacking framekwork and hardware support. That being said, an opportunity exhists to combine dynamical neuron models with complex-valued neural networks to more directly represent the temporal behavior observed in biological systems.
 				</p>
+				
 
 
 
@@ -124,15 +131,11 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					Complex-valued neural networks introduce several challenges beyond those found in conventional real-valued models. Activation functions are particularly difficult because complex numbers have no natural ordering, while functions that are fully complex-differentiable are mathematically restrictive. Backpropagation and optimization also require additional consideration, often using Wirtinger derivatives or treating the real and imaginary components separately. These differences complicate the direct adaptation of common activation functions, optimizers, and training methods.
+					Complex-valued networks introduce difficult challenges beyond those found in conventional models. This is due to the complex numbers not having a natural ordering, leading to their functions not being differentiable in the same way as their real-valued counterparts. Hence, network optimization requires additional considerations. For example, during backpropagation we must use Wirtinger derivatives or treating the real and imaginary components separately. These differences complicate the direct adaptation of common activation functions, optimizers, and training methods. Additionally, the network weights must be initialized as complex-values and map following complex-valued rules. Finally, complex arithmetic carries additional computational and memory costs, which heavily effected network training times.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					Complex values also introduce additional concerns regarding stability and representation. Weight initialization and normalization must account for both magnitude and phase, while loss functions must ultimately map complex outputs to a real-valued objective. This becomes especially important when phase represents meaningful information, such as the timing or synchronization of neuronal activity, since conventional operations may unintentionally distort these relationships.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					Finally, practical implementation remains more difficult than with real-valued networks. Machine-learning frameworks provide varying levels of support for complex tensors, and some layers, operations, and hardware optimizations remain oriented toward real-valued computation. Complex arithmetic also carries additional computational and memory costs. Together, these challenges make complex-valued networks more difficult to design and train, even when complex representations are well suited to the underlying problem.
+					Essentially, a practical implementation remains more difficult for complex-valued networks than with real-valued. Machine-learning frameworks provide varying levels of support for complex tensors, but most layers, operations, and hardware optimizations remain oriented toward real-valued computation. Together, these challenges make complex-valued networks more difficult to design and train, even when complex representations are well suited to the underlying problem.
 				</p>
 
 
@@ -143,20 +146,36 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					A dynamical system describes how the state of a system changes over time. It can be defined by three basic components: a state space, an evolution function describing how the state changes, and a time domain over which that change occurs. The evolution function produces trajectories through the state space, often visualized as a phase space. Of particular interest are fixed points, where the state no longer changes; these can be stable, attracting nearby trajectories, or unstable, repelling them.
+					Here we lightly introduce some of the mathematical background used for the activation function. The best formulation to understand the properties of the activation function is through the lense of dynamical systems. This section evolves to cover the Andronov-Hopf bifurcation, the basis of our function.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					A bifurcation occurs when changing a system parameter causes a qualitative change in the structure or behavior of the dynamical system. For example, a fixed point may appear, disappear, or change stability as a parameter crosses a critical value. Bifurcations can often be represented by simplified differential equations called normal forms, which preserve the essential behavior of the bifurcation while removing unnecessary complexity.
+					A dynamical system describes the change of a state over an interval of time that is governed by an evolution equations. This system can be defined with these three basic components: a state space <Latex>x_i</Latex>, an evolution function <Latex>{String.raw`\frac{dx}{dt}`}</Latex>, and a time domain <Latex>t_0 - t_n</Latex>. The evolution function produces trajectories through the state space, often visualized as a phase space. In this phase space, and of particular interest, are fixed locations, where the state no longer changes. These points can be stable, attracting nearby trajectories, or unstable, repelling them. 
 				</p>
+
+				<Image
+					src={image_limit_cycle}
+					alt="Phase space: stable limit cycle"
+					className="lg:float-left lg:w-1/3 rounded-lg mr-4"
+				/>
+
+				<p className="my-4 text-slate-700">
+					A bifurcation occurs when the coefficients of a system cause a qualitative change in the structure or behavior of the phase space. For example, a fixed point may appear, disappear, or change stability if coefficients crosse a critical value. Bifurcations can often be represented by simplified differential equations called normal forms, which preserve the essential behavior of the bifurcation while removing unnecessary complexity.
+				</p>
+				
+				{/* <a href='#ref_han_3' className='text-red-500'> [3]</a> */}
 
 				<p className="my-4 text-slate-700">
 					A limit cycle is an isolated closed trajectory representing periodic behavior: once a state lies on the cycle, its evolution repeatedly follows the same orbit. Like fixed points, limit cycles can be stable or unstable. A stable limit cycle attracts nearby trajectories and therefore produces a persistent oscillation even when the initial state does not begin exactly on the cycle.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					The Hopf bifurcation connects these concepts by describing a transition between a fixed point and periodic oscillation as a system parameter changes. This makes it particularly relevant to neuronal dynamics: a resting neuron can be associated with a stable state, while repetitive firing can be represented by oscillatory limit-cycle behavior. Your uploaded thesis uses this structure directly, defining a dynamical system in the complex domain whose evolution follows the Hopf normal form, thereby giving the proposed activation function a limit-cycle structure.
+					The Poincaré-Andronov-Hopf bifurcation, or simply Hopf bifurcation, is a limit cycle bifurcation which occurs when a dynamical system of degree two or greater while containing two strictly imaginary conjugate eigenvalues, and all other eigenvalues having a negative real part. This unique bifurcation can be easily adapted to neuronal firing, as described by Izhikevich
+					<a href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2]</a>,
+					becuase it can reprsent both the resting and excited states of a neuron.
 				</p>
+
+				{/* --------------- START HERE --------------- */}
 
 
 
@@ -312,37 +331,25 @@ export default async function ThesisPage() {
 				<h1 className="mt-12 text-2xl text-slate-900">
 					References
 				</h1>
-				
-				{/* <p id='ref_neuro_dale_purves' className="my-4 text-slate-700">
-					[1] Neuroscience by Dale Purves
-				</p>
 
-				<p className="my-4 text-slate-700">
-					[2] Dyn. Sys. In Neuro Science
-				</p>
-
-				<p className="my-4 text-slate-700">
-					[3] S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087
-				</p>
-
-				<div className="flex flex-row w-full h-auto">
+				<div id="ref_purves_1" className="flex flex-row my-4">
 					<div className="justify-left pr-2">[1]</div>
-					<div className="text-left pl-2">{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}</div>
+					<div className="text-left pl-2">D. Purves et al., Eds., Neuroscience. New York Oxford: Sinauer Associates is an imprint of Oxford University Press, 2018.</div>
 				</div>
 
-				<Reference>
-					{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}
-				</Reference> */}
+				<div id="ref_izhikevich_2" className="flex flex-row my-4"> 	
+					<div className="justify-left pr-2">[2]</div>
+					<div className="text-left pl-2">
+						E. M. Izhikevich, Dynamical Systems in Neuroscience: The Geometry of Excitability and Bursting. in Computational Neuroscience Series. Cambridge, MA, USA: MIT Press, 2006.
+					</div>
+				</div>
 
-				<Reference className="my-4">
-					{String.raw`S. Haykin, J. C. Principe, T. J. Sejnowski, and J. Mcwhirter, “What Makes a Dynamical System Computationally Powerful?,” in New Directions in Statistical Signal Processing: From Systems to Brains, MIT Press, 2007, pp. 127–154. Accessed: Sep. 08, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/6282087`}
-				</Reference>
-
-				{/* Test with other stuff ... or move on and get this page done ...  */}
-
-				<Reference className="my-4">
-					{String.raw`K. O’Shea and R. Nash, “An Introduction to Convolutional Neural Networks,” Dec. 02, 2015, arXiv: arXiv:1511.08458. doi: 10.48550/arXiv.1511.08458.`}
-				</Reference>
+				<div id="ref_han_3" className="flex flex-row my-4">
+					<div className="justify-left pr-2">[3]</div>
+					<div className="text-left pl-2">
+						Han, M., Yu, P., 2012. Normal Forms, Melnikov Functions and Bifurcations of Limit Cycles, Applied Mathematical Sciences. Springer, London. https://doi.org/10.1007/978-1-4471-2918-9
+					</div>
+				</div>
 
 			</section>
 

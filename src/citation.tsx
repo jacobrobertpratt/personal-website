@@ -1,6 +1,12 @@
 
 import { createHash } from 'crypto';
 
+/*
+* TODO: Link the Cite function to the Reference function so they automatically order themselves.
+* Essentially, you use the Cite Typescript <Tag> and the reference automatically ...
+* I actually don't know about this anymore.
+*/
+
 // List of id values specific to the set reference.
 let ref_id_list: string[] = [];
 
