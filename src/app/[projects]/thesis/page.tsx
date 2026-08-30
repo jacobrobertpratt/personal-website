@@ -52,8 +52,6 @@ def call( self , inputs , states , training = False ):
 
 export default async function ThesisPage() {
 	
-	const test_latex_string = String.raw`\text{This is a test string ... and Math:  } \frac{a}{b} 2`;
-
 	return (
 		<div className="flex flex-col items-center justify-center min-h-32 pb-60">
 			
@@ -170,40 +168,34 @@ export default async function ThesisPage() {
 				</p>
 
 				<p className="my-4 text-slate-700">
-					The Poincaré-Andronov-Hopf bifurcation, or simply Hopf bifurcation, is a limit cycle bifurcation which occurs when a dynamical system of degree two or greater while containing two strictly imaginary conjugate eigenvalues, and all other eigenvalues having a negative real part. This unique bifurcation can be easily adapted to neuronal firing, as described by Izhikevich
+					The Poincaré-Andronov-Hopf bifurcation, or simply Hopf bifurcation, is a limit-cycle bifurcation which occurs when a dynamical system of degree two or greater while containing two strictly imaginary conjugate eigenvalues, and all other eigenvalues having a negative real part. This unique bifurcation can be easily adapted to neuronal firing, as described by Izhikevich
 					<a href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2]</a>,
 					becuase it can reprsent both the resting and excited states of a neuron.
 				</p>
-
-				{/* --------------- START HERE --------------- */}
-
-
 
 				<h1 className="mt-12 text-2xl text-slate-900">
 					The Activation Function
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					The proposed Hopf activation function uses the Poincaré-Andronov-Hopf bifurcation as a nonlinear, complex-valued activation. Rather than directly mapping an input through a static algebraic function, the activation treats the input as the initial state of a dynamical system and uses an ordinary differential equation (ODE) to evolve it over a specified time interval. The underlying Hopf bifurcation is a two-dimensional limit-cycle bifurcation, making the activation naturally capable of representing both radial and rotational behavior in the complex plane.
+					The proposed Hopf activation function uses the Poincaré-Andronov-Hopf bifurcation as a nonlinear, complex-valued activation. Rather than directly mapping an input through a static algebraic function an ordinary differential equation (ODE) sover is used to to generate the function output. The underlying function takes multiple inputs, which is opposed to a single floating point value. Gradient changes are generated for the input coefficients and state values supplied to the network. This method allows better control of the activation outputs and stability.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					The activation is controlled primarily by two complex coefficients, (\alpha=a+ib) and (\beta=c+id). Their real components determine much of the radial behavior and stability of the system. To ensure a stable limit cycle, the real component (c) of (\beta) is restricted to negative values. Under this restriction, (a\le0) causes the state to converge toward the origin, while (a\gt0) produces a stable limit cycle whose radius depends nonlinearly on (a) and (c). The resulting radial behavior therefore resembles a nonlinear piecewise activation while retaining the dynamics of the Hopf system.
+					The activation functon coefficients are two complex-valued coefficients, <Latex>\alpha=(a+ib)</Latex> and <Latex>\beta=(c+id)</Latex>, where <Latex>{String.raw`\alpha,\beta \in \mathbb{C}`}</Latex>. Their real components determine much of the radial behavior and stability of the system. To ensure a stable limit cycle, the real component <Latex>c</Latex> of <Latex>\beta</Latex> is restricted to negative values. Under this restriction, <Latex>a \le 0</Latex> causes the state to converge toward the origin, while <Latex>a \gt 0</Latex> produces a stable limit cycle whose radius depends nonlinearly on <Latex>a</Latex> and <Latex>c</Latex>. The resulting radial behavior therefore is a nonlinear piecewise activation retaining the dynamics of the Hopf system.
 				</p>
 
-				<p className="justify-self-center my-4 text-slate-500">
-					<Latex>{test_latex_string}</Latex>
-				</p>
+				{/* ---------------  ADD Image describing Limit Cycle stuff --------------- */}
 
 				<p className="my-4 text-slate-700">
-					The imaginary components (b) and (d) primarily control the angular or rotational behavior of the activation. The value (b) governs rotation inside the limit-cycle radius, while (d) influences rotation outside it. Requiring these components to have compatible signs produces phase uniformity, preventing abrupt changes in rotational direction that can create numerical instability. Consequently, the real and imaginary components of the coefficients provide a degree of separation between the activation's radial stability and its phase or frequency behavior.
+					The imaginary components <Latex>b</Latex> and <Latex>d</Latex> primarily control the angular or rotational behavior of the activation. The value <Latex>b</Latex> governs rotation inside the limit-cycle radius, while <Latex>d</Latex> influences rotation outside. Requiring these components to have compatible signs produces phase uniformity, preventing abrupt changes in rotational direction that can create numerical instability. Consequently, the real and imaginary components of the coefficients provide a degree of separation between the activation's radial stability and its phase or frequency behavior.
 				</p>
+
+				{/* --------------- START EDITING HERE --------------- */}
 
 				<p className="my-4 text-slate-700">
 					The resulting Hopf activation combines properties that are normally separated in conventional activation functions: nonlinear amplitude control, stable recurrent behavior, and continuous phase evolution. Simulations in the thesis demonstrate transitions between fixed-point and limit-cycle behavior while also showing that changes to the imaginary coefficients alter the frequency and angular evolution of the state. This allows the activation to operate as a complex-valued dynamical process rather than simply a static transformation of its input.
 				</p>
-
-
 
 
 				
