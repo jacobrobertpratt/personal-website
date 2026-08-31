@@ -185,17 +185,11 @@ export default async function ThesisPage() {
 					The activation functon coefficients are two complex-valued coefficients, <Latex>\alpha=(a+ib)</Latex> and <Latex>\beta=(c+id)</Latex>, where <Latex>{String.raw`\alpha,\beta \in \mathbb{C}`}</Latex>. Their real components determine much of the radial behavior and stability of the system. To ensure a stable limit cycle, the real component <Latex>c</Latex> of <Latex>\beta</Latex> is restricted to negative values. Under this restriction, <Latex>a \le 0</Latex> causes the state to converge toward the origin, while <Latex>a \gt 0</Latex> produces a stable limit cycle whose radius depends nonlinearly on <Latex>a</Latex> and <Latex>c</Latex>. The resulting radial behavior therefore is a nonlinear piecewise activation retaining the dynamics of the Hopf system.
 				</p>
 
-				{/* ---------------  ADD Image describing Limit Cycle stuff --------------- */}
+				{/* ---------------  ADD Image showing limit cycle coefficients --------------- */}
 
 				<p className="my-4 text-slate-700">
 					The imaginary components <Latex>b</Latex> and <Latex>d</Latex> primarily control the angular or rotational behavior of the activation. The value <Latex>b</Latex> governs rotation inside the limit-cycle radius, while <Latex>d</Latex> influences rotation outside. Requiring these components to have compatible signs produces phase uniformity and prevents abrupt changes in rotational direction that causes solver instability. Consequently, the real and imaginary components of the coefficients provide a degree of separation between the activation's radial stability and its frequency behavior.
 				</p>
-
-				{/* --------------- START EDITING HERE --------------- */}
-
-				{/* <p className="my-4 text-slate-700">
-					The resulting Hopf activation combines properties that are normally separated in conventional activation functions. The nonlinear amplitude control, stable recurrent behavior, and continuous phase evolution ensure this behavior.  Simulations in the thesis demonstrate transitions between fixed-point and limit cycle behavior while also showing that changes to the imaginary coefficients alter the frequency and angular evolution of the state. This allows the activation to operate as a complex-valued dynamical process rather than simply a static transformation of its input.
-				</p> */}
 
 
 
@@ -205,21 +199,189 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					This research was implemented in Python using TensorFlow
-					<a className="text-red-500">[cite]</a>, TensorFlow Probability, and other supporting libraries. A major component of the implementation was enabled by TensorFlow Probability, which provided a Dormand–Prince (DOPRI) ODE solver with adjoint sensitivity for gradient calculations. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018), Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
+					This research was implemented in Python using TensorFlow <a className="text-red-500">[cite]</a>, TensorFlow Probability <a className="text-red-500">[cite]</a>, and other supporting libraries. A critical implementation feature was provided by the TensorFlow Probability library, providing the Dormand–Prince (DOPRI) ODE solver <a className="text-red-500">[cite]</a> with the adjoint sensitivity gradient calculation included. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018) <a className="text-red-500">[cite]</a>, Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					The network was evaluated using two time-dependent datasets: Mackey–Glass and Copy Memory. Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					Working in the complex-valued domain required several custom implementations. A custom recurrent-network calling function was created as a wrapper around the standard tf.keras.backend.rnn function.
+					Working with TensorFlow's Keras in the complex-valued domain required several custom  implementations. First was defining a single RNN operation in a new tf.keras.layer, called a 'cell'. Below is a simplified example of the implementation. 
 				</p>
 
 				{/* Current Codeblock configuration */}
 				<div className="border border-slate-400 rounded-lg bg-[#e9e9e9]">
-					<button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
+					{/* Copy button that needs to be in the client window -> TODO!! */}
+					{/* <button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
+							<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+								/>
+							</svg>
+						</button> */}
+					<CodeBlock className="text-sm">{
+						String.raw`
+@tf.keras.utils.register_keras_serializable( 'hopf_theta_cell' )
+class HopfRNNCellTheta( tf.keras.layers.Layer ):
+	
+	# RNNCell processes one timestep of a Hopf-Bifurcation recurrent network. #
+
+	def __init__( self, units, **kwargs):
+		super( HopfRNNCellTheta , self ).__init__( **kwargs )
+		self.units = units
+
+    def build( self , input_shape ):
+
+        inshp = list( input_shape )
+        self.bsz = inshp[0]
+        self.isz = inshp[-1]
+        
+        wgtnme = 'u' + str( self.units ) + '_' + self.name.split('_')[0]
+        self.A = self.add_weight(
+            shape = ( self.units , self.units ),
+            initializer = self.recwgt( name = self.rwgtnme + '_' + wgtnme , save = do_save ),
+            trainable = do_train,
+            dtype = self.dtype,
+            name = 'A_' + wgtnme
+        )
+        
+        self.B = self.add_weight(
+            shape = ( self.units , self.units ),
+            initializer = self.inpwgt( name = self.iwgtnme + '_' + wgtnme , save = do_save ),
+            trainable = do_train,
+            dtype = self.dtype,
+            name = 'B_' + wgtnme
+        )
+        
+        super( HopfRNNCellTheta , self ).build( input_shape )
+        
+        self.built = True
+
+    def split_input( self , v ):
+        vstk = tf.unstack( v , axis = -1 )
+        return tf.expand_dims( vstk[0] , -1 ) , tf.stack( vstk[1::] , axis = -1 )
+
+    def combine_output( self , v0 , v_ ):
+        vlst = [ tf.squeeze( v0 , -1 ) ] + tf.unstack( v_ , axis = -1 )
+        return tf.stack( vlst , axis = -1 )
+
+    def std_map( self , A , B , v1 , v2 ):
+        Av1 = tf.linalg.matmul( v1 , A )
+        Bv2 = tf.linalg.matmul( v2 , B )
+        return Av1 + Bv2 , Av1 , Bv2
+
+    def call( self , inputs , states , training = False ):
+        
+        z = states[0] if tf.nest.is_nested( states ) else states
+        x = inputs[0] if tf.nest.is_nested( inputs ) else inputs
+        
+        z0 , z_ = self.split_input( z )
+        x0 , x_ = self.split_input( x )
+        
+        z_i , Az , Bx = self.std_map( self.A , self.B , z_ , x_ )
+        
+        if self.activate is not None:
+            y_k = self.activate( z_ , z_i ) if self.actinpt_size == 2 else self.activate( z_i )
+        else:
+            y_k = z_i
+        
+        re_j = ( z0 + x0 ) / 2.
+        y_t = self.combine_output( re_j , y_k )
+        
+        z_k , _ = tf.linalg.normalize( z_ + z_i , ord = 2 )
+        z_t = self.combine_output( re_j , z_k )
+        
+        z_t = [ z_t ] if tf.nest.is_nested( states ) else z_t
+        
+        return y_t , z_t
+		`}
+					</CodeBlock>
+				</div>
+
+				<p className="my-4 text-slate-700">
+					A custom RNN layer was implemented to map real-valued inputs into the complex domain and return the resulting complex-valued states to the real domain for output. Internally it passed the 'cell' layer to an internal rnn function, an example of this is shown below.
+				</p>
+
+				{/* Current Codeblock configuration */}
+				<div className="border border-slate-400 rounded-lg bg-[#e9e9e9]">
+					{/* Copy button that needs to be in the client window -> TODO!! */}
+					{/* <button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
+							<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+								/>
+							</svg>
+						</button> */}
+					<CodeBlock className="text-sm">{
+						String.raw`
+@tf.keras.utils.register_keras_serializable( 'hopf_theta_layer' )
+class HopfRNNLayerTheta( tf.keras.layers.Layer ):
+    
+    def __init__( self, units, **kwargs):
+        
+        super( HopfRNNLayerTheta , self ).__init__( **kwargs )
+        
+        self.cell = None
+        self.units = units
+
+		...
+
+		Other parameters
+        
+        
+    def build( self , input_shape ):
+        
+        # Create internal hopf cell #
+        if self.cell is None:
+            self.cell = HopfRNNCellTheta(
+                units = self.units,
+                dtype = self.dtype,
+                name = self.name + '_cell'
+            )
+		
+        super( HopfRNNLayerTheta , self ).build( input_shape )
+        
+        self.built = True
+        
+    def fft_input( self , val ):
+        return tf.signal.rfft( val , fft_length = [ self.seqlen ] )[::,::,0:self.usz] / self.fftnorm 
+
+    def fft_output( self , val ):
+        return tf.signal.irfft( val * self.fftnorm , fft_length = [ self.seqlen ] )[::,0:self.isz,0:self.osz]
+
+    def call( self , inputs , training = False ):
+        
+        _input = self.fft_input( inputs )
+        
+		# Internal call to manage backend rnn function #
+        rnn_return = self.rnn_call(
+            self.cell,
+            _input,
+            self.state,
+            training = training # bool -> to train or to run.
+        )
+        _clast , _cout , _cstate = rnn_return
+        
+        if self.stateful: self.state.assign( _cstate )
+        
+        _output = self.fft_output( _cout )
+        
+        if not self.return_sequences: _output = _output[::,-1,::]
+        
+        return tf.cast( _output , inputs.dtype )
+		`}
+					</CodeBlock>
+				</div>
+
+				<p className="my-4 text-slate-700">
+					The Hopf activation function was implemented in its own custom layer. The Hopf evolution equation served as the solver's step function, while complex-valued parameters had to be separated and recombined because the DOPRI implementation did not directly support complex-valued data types.
+				</p>
+
+				{/* Current Codeblock configuration */}
+				<div className="border border-slate-400 rounded-lg bg-[#e9e9e9]">
+					{/* Copy button that needs to be in the client window -> TODO!! */}
+					{/* <button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
 						<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 							<path
 								strokeLinecap="round"
@@ -227,42 +389,77 @@ export default async function ThesisPage() {
 								d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
 							/>
 						</svg>
-					</button>
-					<CodeBlock className="text-sm">{test_python_code_examlpe_2}</CodeBlock>
+					</button> */}
+					<CodeBlock className="text-sm">{
+						String.raw`
+@tf.keras.utils.register_keras_serializable( 'activations' )
+class HopfActCpx( tf.keras.layers.Layer ):
+    
+    def __init__( self, **kwargs):
+        
+        self.dopri = tfp.math.ode.DormandPrince()
+        
+        super( HopfActCpx , self ).__init__( **kwargs )
+        
+    def build( self , input_shape ):
+        
+        super( HopfActCpx , self ).__init__()
+        
+        self.built = True
+        
+    def cpx_hopf_DiffEQ( self , t , z_stk , re_a , im_a , re_b , im_b ):
+        
+        re_z , im_z = tf.unstack( z_stk )
+        z = tf.complex( re_z , im_z )
+        a = tf.complex( re_a , im_a )
+        b = tf.complex( re_b , im_b )
+        
+        def hopf_map( z , a , b ):
+            zz = tf.cast( tf.math.pow( tf.math.abs( z ) , 2 ) , dtype = z.dtype )
+            bzz = tf.math.multiply( b , zz )
+            w = a + bzz
+            dz = tf.math.multiply( w , z )
+            return dz
+        
+        dz = hopf_map( z , a , b )
+        
+        return tf.stack( [ tf.math.real( dz ) , tf.math.imag( dz ) ] )
+    
+    def cpx_hopf_ODE( self , z , a , b ):
+        
+        t_0 = 0.
+        t_n = 2*np.pi
+        t_n = tf.linspace( t_0 , t_n , num = 12 )
+        
+        re_a , im_a = tf.math.real( a ) , tf.math.imag( a )
+        re_b , im_b = tf.math.real( b ) , tf.math.imag( b )
+        
+        state = tf.stack( [ tf.math.real( z ) , tf.math.imag( z ) ] )
+        const = { 're_a' : re_a , 'im_a' : im_a , 're_b' : re_b , 'im_b' : im_b }
+        ode = self.dopri.solve(
+            self.cpx_hopf_DiffEQ,
+            t_0,
+            state,
+            solution_times = t_n,
+            constants = const
+        )
+        re_zt , im_zt = tf.unstack( ode.states[-1] )
+        return tf.complex( re_zt , im_zt )
+        
+    def call( self , z , a , b ):
+        z_0 , a_0 , b_0 = tf.cast( z , dtype = tf.complex128 ) , tf.cast( a , dtype = tf.complex128 ) , tf.cast( b , dtype = tf.complex128 )
+        z_t = self.cpx_hopf_ODE( z_0 , a_0 , b_0 )
+        return tf.cast( z_t , dtype = z.dtype )
+		`
+					}</CodeBlock>
 				</div>
 
 				<p className="my-4 text-slate-700">
-					A custom RNN layer was implemented to map real-valued inputs into the complex domain and return the resulting complex-valued states to the real domain for output.
+					Other custom implementations can be seen in my repostiory, at <a className="text-red-500">link</a>.
 				</p>
 
-				<p className="my-4 text-slate-700"> ------- CODE EXAMPLE ------- </p>
-
 				<p className="my-4 text-slate-700">
-					A custom RNN unit was implemented to represent a single recurrent step operating in the complex domain.
-				</p>
-
-				<p className="my-4 text-slate-700"> ------- CODE EXAMPLE ------- </p>
-
-				<p className="my-4 text-slate-700">
-					The specialized Hopf activation function was implemented using TensorFlow Probability's ODE solver. The Hopf evolution equation served as the solver's step function, while complex-valued parameters had to be separated and recombined because the DOPRI implementation did not directly support complex-valued data types.
-				</p>
-
-				<p className="my-4 text-slate-700"> ------- CODE EXAMPLE ------- </p>
-
-				<p className="my-4 text-slate-700">
-					Unitary, Hermitian, and skew-Hermitian initialization matrices required custom implementations, while standard initialization matrices were converted to the complex64 data type.
-				</p>
-
-				<p className="my-4 text-slate-700"> ------- CODE EXAMPLE ------- </p>
-
-				<p className="my-4 text-slate-700">
-					Experiments were also conducted using a custom optimization algorithm based on RMSProp. The primary modifications separated gradient updates according to the matrix properties of the parameters being updated.
-				</p>
-
-				<p className="my-4 text-slate-700"> ------- CODE EXAMPLE ------- </p>
-				
-				<p className="my-4 text-slate-700">
-					Interestingly, GPU execution resulted in slower performance than CPU execution. The thesis attributes this behavior to the use of complex-valued operations and the RMSProp optimizer, with portions of the model potentially executing on different processors and introducing additional CPU–GPU memory-transfer overhead.
+					Interestingly, GPU execution resulted in slower performance than CPU execution. The could have been attributed to the use of complex-valued operations and the RMSProp optimizer, with portions of the model potentially introducing additional CPU–GPU memory-transfer overhead.
 				</p>
 
 				<p className="my-4 text-slate-700">
@@ -270,11 +467,18 @@ export default async function ThesisPage() {
 				</p>
 
 
+				{/* ------------------ EDITING HERE ------------------ */}
+
+
 
 
 				<h1 className="mt-12 text-2xl text-slate-900">
 					Results
 				</h1>
+
+				<p className="my-4 text-slate-700">
+					The network was evaluated using the Mackey–Glass <a className="text-red-500">[cite]</a> and Copy Memory <a className="text-red-500">[cite]</a> time-dependent datasets. The Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
+				</p>
 
 				<p className="my-4 text-slate-700">
 					Different network and dataset sizes were tested against multiple Hopf activation parameter configurations to evaluate the function's feasibility and performance. The parameter experiments evaluated seven configurations of the initial state (\gamma_t_0), linear coefficient (\alpha), and nonlinear coefficient (\beta). Each configuration was compared against a Base model using the identity activation, while the two best Hopf configurations were later compared against established complex-valued activation functions, including CpxCard, splitReLU, modReLU, SigLog, and (\tanh). In total, 168 models and 4,368 training runs were evaluated across the Mackey–Glass and Copy Memory datasets.
