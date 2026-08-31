@@ -188,14 +188,15 @@ export default async function ThesisPage() {
 				{/* ---------------  ADD Image describing Limit Cycle stuff --------------- */}
 
 				<p className="my-4 text-slate-700">
-					The imaginary components <Latex>b</Latex> and <Latex>d</Latex> primarily control the angular or rotational behavior of the activation. The value <Latex>b</Latex> governs rotation inside the limit-cycle radius, while <Latex>d</Latex> influences rotation outside. Requiring these components to have compatible signs produces phase uniformity, preventing abrupt changes in rotational direction that can create numerical instability. Consequently, the real and imaginary components of the coefficients provide a degree of separation between the activation's radial stability and its phase or frequency behavior.
+					The imaginary components <Latex>b</Latex> and <Latex>d</Latex> primarily control the angular or rotational behavior of the activation. The value <Latex>b</Latex> governs rotation inside the limit-cycle radius, while <Latex>d</Latex> influences rotation outside. Requiring these components to have compatible signs produces phase uniformity and prevents abrupt changes in rotational direction that causes solver instability. Consequently, the real and imaginary components of the coefficients provide a degree of separation between the activation's radial stability and its frequency behavior.
 				</p>
 
 				{/* --------------- START EDITING HERE --------------- */}
 
-				<p className="my-4 text-slate-700">
-					The resulting Hopf activation combines properties that are normally separated in conventional activation functions: nonlinear amplitude control, stable recurrent behavior, and continuous phase evolution. Simulations in the thesis demonstrate transitions between fixed-point and limit-cycle behavior while also showing that changes to the imaginary coefficients alter the frequency and angular evolution of the state. This allows the activation to operate as a complex-valued dynamical process rather than simply a static transformation of its input.
-				</p>
+				{/* <p className="my-4 text-slate-700">
+					The resulting Hopf activation combines properties that are normally separated in conventional activation functions. The nonlinear amplitude control, stable recurrent behavior, and continuous phase evolution ensure this behavior.  Simulations in the thesis demonstrate transitions between fixed-point and limit cycle behavior while also showing that changes to the imaginary coefficients alter the frequency and angular evolution of the state. This allows the activation to operate as a complex-valued dynamical process rather than simply a static transformation of its input.
+				</p> */}
+
 
 
 				
@@ -204,7 +205,8 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					This research was implemented in Python using TensorFlow, TensorFlow Probability, and other supporting libraries. A major component of the implementation was enabled by TensorFlow Probability, which provided a Dormand–Prince (DOPRI) ODE solver with adjoint sensitivity for gradient calculations. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018), Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
+					This research was implemented in Python using TensorFlow
+					<a className="text-red-500">[cite]</a>, TensorFlow Probability, and other supporting libraries. A major component of the implementation was enabled by TensorFlow Probability, which provided a Dormand–Prince (DOPRI) ODE solver with adjoint sensitivity for gradient calculations. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018), Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
 				</p>
 
 				<p className="my-4 text-slate-700">
