@@ -9,6 +9,7 @@ import image_limit_cycle from './images/dyn_sys_limit_cycle_example.png'
 import { Latex } from '@/latex';
 import { CodeBlock } from '@/codeblock'
 import { Reference } from '@/citation'
+import Link from "next/link";
 
 const test_python_code_example_1 = String.raw`
 # Create internal hopf cell (represents a single timestep )
@@ -69,7 +70,7 @@ export default async function ThesisPage() {
 			</section>
 
 			{/* INTRODUCTION */}
-			<section className="w-5/7 p-2">
+			<section className="w-10/11 p-2">
 
 				<h1 className="text-2xl text-slate-900">
 					Introduction
@@ -181,6 +182,8 @@ export default async function ThesisPage() {
 					The proposed Hopf activation function uses the Poincaré-Andronov-Hopf bifurcation as a nonlinear, complex-valued activation. Rather than directly mapping an input through a static algebraic function an ordinary differential equation (ODE) sover is used to to generate the function output. The underlying function takes multiple inputs, which is opposed to a single floating point value. Gradient changes are generated for the input coefficients and state values supplied to the network. This method allows better control of the activation outputs and stability.
 				</p>
 
+				{/* --------------- TODO: Add Hopf Activatio function here. --------------- */}
+
 				<p className="my-4 text-slate-700">
 					The activation functon coefficients are two complex-valued coefficients, <Latex>\alpha=(a+ib)</Latex> and <Latex>\beta=(c+id)</Latex>, where <Latex>{String.raw`\alpha,\beta \in \mathbb{C}`}</Latex>. Their real components determine much of the radial behavior and stability of the system. To ensure a stable limit cycle, the real component <Latex>c</Latex> of <Latex>\beta</Latex> is restricted to negative values. Under this restriction, <Latex>a \le 0</Latex> causes the state to converge toward the origin, while <Latex>a \gt 0</Latex> produces a stable limit cycle whose radius depends nonlinearly on <Latex>a</Latex> and <Latex>c</Latex>. The resulting radial behavior therefore is a nonlinear piecewise activation retaining the dynamics of the Hopf system.
 				</p>
@@ -200,7 +203,7 @@ export default async function ThesisPage() {
 
 				<p className="my-4 text-slate-700">
 					This research was implemented in Python using TensorFlow <a className="text-red-500">[cite]</a>, TensorFlow Probability <a className="text-red-500">[cite]</a>, and other supporting libraries. A critical implementation feature was provided by the TensorFlow Probability library, providing the Dormand–Prince (DOPRI) ODE solver <a className="text-red-500">[cite]</a> with the adjoint sensitivity gradient calculation included. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018) <a className="text-red-500">[cite]</a>, Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
-				</p>
+				</p>				
 
 				<p className="my-4 text-slate-700">
 					Working with TensorFlow's Keras in the complex-valued domain required several custom  implementations. First was defining a single RNN operation in a new tf.keras.layer, called a 'cell'. Below is a simplified example of the implementation. 
@@ -467,56 +470,30 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				</p>
 
 
+
+
+				<h1 className="mt-12 text-2xl text-slate-900">
+					Results & Discussion
+				</h1>
+
+				<p className="my-4 text-slate-700">
+					The network was evaluated using the Mackey–Glass <a className="text-red-500">[cite]</a> and Copy Memory <a className="text-red-500">[cite]</a> time-dependent datasets. The Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while the Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
+				</p>
+
+				{/* ------------------ Add image of Copy Memory dataset here ------------------ */}
+
+				<p className="my-4 text-slate-700">
+					Different network and dataset sizes were tested against multiple Hopf activation parameters to evaluate the function's performance. These experiments evaluated seven configurations of the initial state <Latex>{String.raw`\gamma_{t_0}`}</Latex>, linear coefficient <Latex>\alpha</Latex>, and nonlinear coefficient <Latex>\beta</Latex>. Each configuration was compared against a Base model using the identity activation and more established complex-valued activation functions, including CpxCard, splitReLU, modReLU, SigLog, and <Latex>{String.raw`\tanh`}</Latex>. In total, 168 models and 4,368 training runs were evaluated across the the two datasets.
+				</p>
+
+				<p className="my-4 text-slate-700">
+					The parameter experiments found that most Hopf configurations outperformed the Base model, although performance varied with network and input size. Performance was strongest on the Mackey–Glass time-series problem. Two configurations were found that generally outperformed the established complex-valued activation functions tested. Results on the Copy Memory problem were less conclusive and increasing the problems sequence length greatly increased the model's parameters. This lead to compuational and runtime limitations.
+				</p>
+
 				{/* ------------------ EDITING HERE ------------------ */}
 
-
-
-
-				<h1 className="mt-12 text-2xl text-slate-900">
-					Results
-				</h1>
-
 				<p className="my-4 text-slate-700">
-					The network was evaluated using the Mackey–Glass <a className="text-red-500">[cite]</a> and Copy Memory <a className="text-red-500">[cite]</a> time-dependent datasets. The Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					Different network and dataset sizes were tested against multiple Hopf activation parameter configurations to evaluate the function's feasibility and performance. The parameter experiments evaluated seven configurations of the initial state (\gamma_t_0), linear coefficient (\alpha), and nonlinear coefficient (\beta). Each configuration was compared against a Base model using the identity activation, while the two best Hopf configurations were later compared against established complex-valued activation functions, including CpxCard, splitReLU, modReLU, SigLog, and (\tanh). In total, 168 models and 4,368 training runs were evaluated across the Mackey–Glass and Copy Memory datasets.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					The parameter experiments found that most Hopf configurations outperformed the Base model, although performance varied with network and input size. Configurations C(2) and C(4) consistently produced the lowest losses and were selected for further evaluation. Both used an initial state of (m_1^+=(1+i0)) and mapped the recurrent-network state (z_\tau+1^\prime\prime) to the linear (\alpha) coefficient. They differed only in the nonlinear (\beta) coefficient: C(2) used the fixed (m_1^-=(-1+i0)), while C(4) used the constrained (m_2) control method.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					Performance was strongest on the Mackey–Glass time-series problem. C(2) and C(4) substantially reduced evaluation RMSE compared with the identity activation and generally outperformed the established complex-valued activation functions tested. For example, with a window size of 32, C(2) and C(4) achieved average evaluation RMSE values of approximately 0.024, compared with roughly 0.044–0.068 for the established activation functions and 0.197 for the Base model.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					Results on the Copy Memory problem were less conclusive. Increasing sequence length greatly increased the model parameter count, and the Base model performed similarly to models using the various activation functions. C(2) and C(4) still produced among the lowest losses, but their advantage over the established functions was only a few percent. The document therefore concludes that the Copy Memory results should not be used to draw strong conclusions about relative activation-function performance.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					Overall, the experiments demonstrated the feasibility of using the Hopf bifurcation as a trainable complex-valued activation function, with C(2) and C(4) emerging as the most effective configurations tested. The results were particularly promising for the continuous, nonlinear temporal relationships of Mackey–Glass, while also showing that performance depends strongly on network topology, dataset characteristics, and the placement of learnable parameters within the Hopf activation.
-				</p>
-
-
-
-
-				<h1 className="mt-12 text-2xl text-slate-900">
-					Discussion
-				</h1>
-
-				<p className="my-4 text-slate-700">
-					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation with potential for further development. The best configurations performed as well as or better than the established activation functions tested, particularly on the Mackey–Glass dataset. Both configurations used a fixed initial state of (\gamma_t_0=(1+i0)) and applied the recurrent network's linear mapping to the (\alpha) coefficient, suggesting that this arrangement contributed to stability and performance. However, further research is required to determine how much of the observed performance resulted from the Hopf dynamics themselves rather than the ODE solver.
-					</p>
-
-				<p className="my-4 text-slate-700">
-					The Copy Memory experiments were less conclusive. Models using the Hopf activation performed similarly to the other activation functions and the Base model, with limitations likely arising from the network architecture and dataset representation. In particular, the dense layer required substantially more parameters for Copy Memory, while the DFT input mapping discarded frequency information through cropping. The discrete nature of the dataset may have also introduced difficulties associated with the Gibbs phenomenon. These limitations suggest that the network topology should be improved before drawing stronger conclusions from the Copy Memory results.
-				</p>
-
-				<p className="my-4 text-slate-700">
-					Practical limitations also arose from using complex values and an ODE solver. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing C(2) and C(4) configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
+					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation. However, further research is required to determine further viability. Practical limitations also arose from using complex values and an ODE solver. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
 				</p>
 
 				<p className="my-4 text-slate-700">
