@@ -57,7 +57,7 @@ export default async function ThesisPage() {
 		<div className="flex flex-col items-center justify-center min-h-32 pb-60">
 			
 			{/* TITLE */}
-			<section className="w-5/7 my-10 p-2">
+			<section className="w-9/11 my-10 p-2">
 			{/* <Section className="border-black border-2" > */}
 				<ul className="flex flex-wrap justify-start">
 					<div className="text-slate-900 md:text-5xl text-3xl">
@@ -70,7 +70,7 @@ export default async function ThesisPage() {
 			</section>
 
 			{/* INTRODUCTION */}
-			<section className="w-10/11 p-2">
+			<section className="w-9/11 p-2">
 
 				<h1 className="text-2xl text-slate-900">
 					Introduction
@@ -202,7 +202,7 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					This research was implemented in Python using TensorFlow <a className="text-red-500">[cite]</a>, TensorFlow Probability <a className="text-red-500">[cite]</a>, and other supporting libraries. A critical implementation feature was provided by the TensorFlow Probability library, providing the Dormand–Prince (DOPRI) ODE solver <a className="text-red-500">[cite]</a> with the adjoint sensitivity gradient calculation included. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018) <a className="text-red-500">[cite]</a>, Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
+					This research was implemented in Python using TensorFlow <a href="#ref_4_tens_flow" className="text-slate-500 hover:text-black">[4]</a>, TensorFlow Probability <a href="#ref_5_tfp" className="text-slate-500 hover:text-black">[5]</a>, and other supporting libraries. A critical implementation feature was provided by the TensorFlow Probability library, providing the Dormand–Prince (DOPRI) ODE solver with the adjoint sensitivity gradient calculation included. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018) <a href="#ref_8_neural_ode" className="text-slate-500 hover:text-black">[8]</a>, Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
 				</p>				
 
 				<p className="my-4 text-slate-700">
@@ -454,11 +454,12 @@ class HopfActCpx( tf.keras.layers.Layer ):
         z_t = self.cpx_hopf_ODE( z_0 , a_0 , b_0 )
         return tf.cast( z_t , dtype = z.dtype )
 		`
-					}</CodeBlock>
+					}
+					</CodeBlock>
 				</div>
 
 				<p className="my-4 text-slate-700">
-					Other custom implementations can be seen in my repostiory, at <a className="text-red-500">link</a>.
+					Other custom implementations can be seen in my repostiory, at <a href="https://github.com/jacobrobertpratt/Masters-Thesis-Hopf-bifurcation-as-an-Activation-Function" className="text-slate-500 hover:text-black">Github</a>.
 				</p>
 
 				<p className="my-4 text-slate-700">
@@ -477,7 +478,7 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					The network was evaluated using the Mackey–Glass <a className="text-red-500">[cite]</a> and Copy Memory <a className="text-red-500">[cite]</a> time-dependent datasets. The Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while the Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
+					The network was evaluated using the Mackey–Glass <a href="#ref_6_mky_gls" className="text-slate-500 hover:text-black">[6]</a> and Copy Memory <a href="#ref_7_cpy_mem" className="text-slate-500 hover:text-black">[7]</a> time-dependent datasets. The Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while the Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
 				</p>
 
 				{/* ------------------ Add image of Copy Memory dataset here ------------------ */}
@@ -493,7 +494,7 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				{/* ------------------ EDITING HERE ------------------ */}
 
 				<p className="my-4 text-slate-700">
-					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation. However, further research is required to determine further viability. Practical limitations also arose from using complex values and an ODE solver. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
+					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation. However, further research is required to determine exstensive viability. Practical limitations arose from using complex values and an ODE solver. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
 				</p>
 
 				<p className="my-4 text-slate-700">
@@ -526,13 +527,48 @@ class HopfActCpx( tf.keras.layers.Layer ):
 					</div>
 				</div>
 
+				<div id="ref_4_tens_flow" className="flex flex-row my-4">
+					<div className="justify-left pr-2">[4]</div>
+					<div className="text-left pl-2">
+						TensorFlow Developers, “TensorFlow.” Mar. 08, 2024. doi: 10.5281/ZENODO.4724125.
+					</div>
+				</div>
+
+				<div id="ref_5_tfp" className="flex flex-row my-4">
+					<div className="justify-left pr-2">[5]</div>
+					<div className="text-left pl-2">
+						“TensorFlow Probability,” TensorFlow. Accessed: Mar. 21, 2024. [Online]. Available: https://www.tensorflow.org/probability
+					</div>
+				</div>
+
+				<div id="ref_6_mky_gls" className="flex flex-row my-4">
+					<div className="justify-left pr-2">[6]</div>
+					<div className="text-left pl-2">
+						M. C. Mackey and L. Glass, “Oscillation and Chaos in Physiological Control Systems,” Science, vol. 197, no. 4300, pp. 287–289, Jul. 1977, doi: 10.1126/science.267326.
+					</div>
+				</div>
+
+				<div id="ref_7_cpy_mem" className="flex flex-row my-4">
+					<div className="justify-left pr-2">[7]</div>
+					<div className="text-left pl-2">
+						S. Hochreiter, “The Vanishing Gradient Problem During Learning Recurrent Neural Nets and Problem Solutions,” Int. J. Uncertain. Fuzziness Knowl.-Based Syst., vol. 6, pp. 107–116, Apr. 1998, doi: 10.1142/S0218488598000094.
+					</div>
+				</div>
+
+				<div id="ref_8_neural_ode" className="flex flex-row my-4">
+					<div className="justify-left pr-2">[8]</div>
+					<div className="text-left pl-2">
+						R. T. Q. Chen, Y. Rubanova, J. Bettencourt, and D. K. Duvenaud, “Neural Ordinary Differential Equations,” in Advances in Neural Information Processing Systems, Curran Associates, Inc., 2018, pp. 6572–6583. Accessed: Mar. 20, 2024. [Online]. Available: https://proceedings.neurips.cc/paper_files/paper/2018/hash/69386f6bb1dfed68692a24c8686939b9-Abstract.html
+					</div>
+				</div>
+
 			</section>
 
-			<Image
+			{/* <Image
 				src={image_dyn_sys_neuro}
 				alt="Dyn Sys Neuro - Text"
 				className="float-left mr-6 rounded-lg"
-			/>
+			/> */}
 
 		</div>
 
