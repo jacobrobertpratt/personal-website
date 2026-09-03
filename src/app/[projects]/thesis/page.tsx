@@ -1,14 +1,11 @@
 
 import Image from 'next/image';
-import image_dyn_sys_neuro from './images/image_dyn_sys_neuro_sci.jpeg';
 import image_iso_phase_plane from './images/iso_phase_planes_crpd.png';
-import image_unstable_phase_space from './images/dyn_sys_example_unstable_fixed_point_phase_space.png'
-import image_stable_fixed_point from './images/dyn_sys_stable_fixed_point.png'
 import image_limit_cycle from './images/dyn_sys_limit_cycle_example.png'
+import image_hopf_activation from './images/hopf_activation_function.png'
 
 import { Latex } from '@/latex';
 import { CodeBlock } from '@/codeblock'
-import { Reference } from '@/citation'
 import Link from "next/link";
 
 export default async function ThesisPage() {
@@ -134,6 +131,10 @@ export default async function ThesisPage() {
 					becuase it can reprsent both the resting and excited states of a neuron.
 				</p>
 
+
+
+
+
 				<h1 className="mt-12 text-2xl text-slate-900">
 					The Activation Function
 				</h1>
@@ -149,6 +150,13 @@ export default async function ThesisPage() {
 				</p>
 
 				{/* ---------------  ADD Image showing limit cycle coefficients --------------- */}
+				<div className="flex items-center justify-center">
+					<Image
+						src={image_hopf_activation}
+						alt="Hopf Activation Function Image"
+						className="lg:h-auto lg:w-1/2 rounded-lg"
+					/>
+				</div>
 
 				<p className="my-4 text-slate-700">
 					The imaginary components <Latex>b</Latex> and <Latex>d</Latex> primarily control the angular or rotational behavior of the activation. The value <Latex>b</Latex> governs rotation inside the limit-cycle radius, while <Latex>d</Latex> influences rotation outside. Requiring these components to have compatible signs produces phase uniformity and prevents abrupt changes in rotational direction that causes solver instability. Consequently, the real and imaginary components of the coefficients provide a degree of separation between the activation's radial stability and its frequency behavior.
