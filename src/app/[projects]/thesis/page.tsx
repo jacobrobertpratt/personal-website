@@ -11,46 +11,6 @@ import { CodeBlock } from '@/codeblock'
 import { Reference } from '@/citation'
 import Link from "next/link";
 
-const test_python_code_example_1 = String.raw`
-# Create internal hopf cell (represents a single timestep )
-if self.cell is None:
-	self.cell = HopfRNNCellTheta(
-		units = self.units,
-		activation = self.activation,
-		recurrent_weight = self.recurrent_weight,
-		input_weight = self.input_weight,
-		train_weights = self.train_weights,
-		save_weights = self.save_weights,
-		dtype = self.dtype,
-		name = self.name + '_cell'
-	)
-`;
-
-const test_python_code_examlpe_2 = String.raw`
-def call( self , inputs , states , training = False ):
-	z = states[0] if tf.nest.is_nested( states ) else states
-	x = inputs[0] if tf.nest.is_nested( inputs ) else inputs
-	z0 , z_ = self.split_input( z )
-	x0 , x_ = self.split_input( x )
-	
-	z_i , Az , Bx = self.std_map( self.A , self.B , z_ , x_ )
-
-	if self.activate is not None:
-		y_k = self.activate( z_ , z_i ) if self.actinpt_size == 2 else self.activate( z_i )
-	else:
-		y_k = z_i
-
-	re_j = ( z0 + x0 ) / 2.
-	y_t = self.combine_output( re_j , y_k )
-
-	z_k , _ = tf.linalg.normalize( z_ + z_i , ord = 2 )
-	z_t = self.combine_output( re_j , z_k )
-
-	z_t = [ z_t ] if tf.nest.is_nested( states ) else z_t
-
-	return y_t , z_t`;
-
-
 export default async function ThesisPage() {
 	
 	return (
@@ -459,7 +419,7 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				</div>
 
 				<p className="my-4 text-slate-700">
-					Other custom implementations can be seen in my repostiory, at <a href="https://github.com/jacobrobertpratt/Masters-Thesis-Hopf-bifurcation-as-an-Activation-Function" className="text-slate-500 hover:text-black">Github</a>.
+					Other custom implementations can be seen in my repostiory, at <Link href="https://github.com/jacobrobertpratt/Masters-Thesis-Hopf-bifurcation-as-an-Activation-Function" className="text-slate-500 hover:text-black">Github</Link>.
 				</p>
 
 				<p className="my-4 text-slate-700">
