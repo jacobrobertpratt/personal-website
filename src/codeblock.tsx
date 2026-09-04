@@ -28,7 +28,7 @@ export async function CodeBlock(
 	const hast: Root = await codeToHast(
 		code_string,
 		{
-			lang: 'python',
+			lang: language,
 			themes: {
 				light: 'github-light',
 				dark: 'github-dark'
@@ -38,7 +38,7 @@ export async function CodeBlock(
 		}
 	);
 
-	console.log('hast:',hast);
+	// console.log('hast:',hast);
 
 	// Update class and style properties of 'pre' to manipulate codeblock functionality
 	if ("children" in hast) {		
