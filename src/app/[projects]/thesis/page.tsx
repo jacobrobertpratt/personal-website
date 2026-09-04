@@ -5,7 +5,7 @@ import image_limit_cycle from './images/dyn_sys_limit_cycle_example.png'
 import image_hopf_activation from './images/hopf_activation_function.png'
 
 import { Latex } from '@/latex';
-import { CodeBlock } from '@/codeblock'
+import { CodeBlock } from '@/gui/components/codeblock'
 import Link from "next/link";
 
 export default async function ThesisPage() {

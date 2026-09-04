@@ -13,22 +13,7 @@ export const PATH_ROOT_APP = path.join( process.cwd() , "app" );
 
 /** ---------------------- STYLES ---------------------- **/
 
-export const GlobalLayoutClassNames = {
-    root: {
-        header: {
-            head: "bg-green-500",
-            navl: "container mx-auto flex items-center justify-center",
-            link: "hover:text-blue-500 text-white font-bold text-lg"
-        },
-        footer: {
-            foot: "container mx-auto px-4 flex flex-col md:flex-row justify-between items-center",
-            navl: "flex space-x-6 text-sm",
-            link: "hover:text-gray-400 p-2"
-        }
-    },
-    home: {
-    }
-}
+
 
 export const HeaderTitleStyle = {
     classname: "text-4xl font-bold"
