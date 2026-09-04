@@ -60,13 +60,13 @@ export default async function ThesisPage() {
 
 				<p className="my-4 text-slate-700">
 					While studying "Neuroscience" by Dale Purves et al. 
-					<a href='#ref_purves_1' className='text-slate-500 hover:text-black'> [1]</a>, 
+					<Link href='#ref_purves_1' className='text-slate-500 hover:text-black'> [1]</Link>, 
 					an obvious difference between biological and artificial neural networks became apparent. That is, biological networks are highly recurrent with information encoded as frequencies of neuronal firing, while artificial networks transform weighted inputs via nonlinear activation functions. The neuronal frequency and phase having no direct analogue in most architectures.
 				</p>
 
 				<p className="my-4 text-slate-700">
 					Dynamical Systems in Neuroscience by Eugene M. Izhikevich 
-					<a href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2] </a>
+					<Link href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2] </Link>
 					provides another method to model neuronal behavior, as dynamical systems capable of oscillation and repetitive firing. These models involve frequency, amplitude, and phase, and can be represented compactly with complex values.
 				</p>
 
@@ -119,7 +119,7 @@ export default async function ThesisPage() {
 					A bifurcation occurs when the coefficients of a system cause a qualitative change in the structure or behavior of the phase space. For example, a fixed point may appear, disappear, or change stability if coefficients crosse a critical value. Bifurcations can often be represented by simplified differential equations called normal forms, which preserve the essential behavior of the bifurcation while removing unnecessary complexity.
 				</p>
 				
-				{/* <a href='#ref_han_3' className='text-red-500'> [3]</a> */}
+				{/* <Link href='#ref_han_3' className='text-red-500'> [3]</Link> */}
 
 				<p className="my-4 text-slate-700">
 					A limit cycle is an isolated closed trajectory representing periodic behavior: once a state lies on the cycle, its evolution repeatedly follows the same orbit. Like fixed points, limit cycles can be stable or unstable. A stable limit cycle attracts nearby trajectories and therefore produces a persistent oscillation even when the initial state does not begin exactly on the cycle.
@@ -127,7 +127,7 @@ export default async function ThesisPage() {
 
 				<p className="my-4 text-slate-700">
 					The Poincaré-Andronov-Hopf bifurcation, or simply Hopf bifurcation, is a limit-cycle bifurcation which occurs when a dynamical system of degree two or greater while containing two strictly imaginary conjugate eigenvalues, and all other eigenvalues having a negative real part. This unique bifurcation can be easily adapted to neuronal firing, as described by Izhikevich
-					<a href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2]</a>,
+					<Link href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2]</Link>,
 					becuase it can reprsent both the resting and excited states of a neuron.
 				</p>
 
@@ -170,7 +170,7 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					This research was implemented in Python using TensorFlow <a href="#ref_4_tens_flow" className="text-slate-500 hover:text-black">[4]</a>, TensorFlow Probability <a href="#ref_5_tfp" className="text-slate-500 hover:text-black">[5]</a>, and other supporting libraries. A critical implementation feature was provided by the TensorFlow Probability library, providing the Dormand–Prince (DOPRI) ODE solver with the adjoint sensitivity gradient calculation included. This allowed the Hopf activation function to be integrated with automatic differentiation and gradient-based training. The work of Chen et al. (2018) <a href="#ref_8_neural_ode" className="text-slate-500 hover:text-black">[8]</a>, Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
+					This research was implemented with Python using TensorFlow <Link href="#ref_4_tens_flow" className="text-slate-500 hover:text-black">[4]</Link> and the TensorFlow Probability (TFP) <Link href="#ref_5_tfp" className="text-slate-500 hover:text-black">[5]</Link> library. This research relied on the TFP library already having the Dormand-Prince (DOPRI) solver with the adjoint sensitivity method already implemented for gradient updates. This allowed the Hopf activation function to compose gradients during gradient-based training. The work of Chen et al. (2018) <Link href="#ref_8_neural_ode" className="text-slate-500 hover:text-black">[8]</Link>, Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
 				</p>				
 
 				<p className="my-4 text-slate-700">
@@ -179,16 +179,6 @@ export default async function ThesisPage() {
 
 				{/* Current Codeblock configuration */}
 				<div className="border border-slate-400 rounded-lg bg-[#e9e9e9]">
-					{/* Copy button that needs to be in the client window -> TODO!! */}
-					{/* <button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
-							<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-								/>
-							</svg>
-						</button> */}
 					<CodeBlock className="text-sm">{
 						String.raw`
 @tf.keras.utils.register_keras_serializable( 'hopf_theta_cell' )
@@ -274,16 +264,6 @@ class HopfRNNCellTheta( tf.keras.layers.Layer ):
 
 				{/* Current Codeblock configuration */}
 				<div className="border border-slate-400 rounded-lg bg-[#e9e9e9]">
-					{/* Copy button that needs to be in the client window -> TODO!! */}
-					{/* <button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
-							<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-								/>
-							</svg>
-						</button> */}
 					<CodeBlock className="text-sm">{
 						String.raw`
 @tf.keras.utils.register_keras_serializable( 'hopf_theta_layer' )
@@ -351,16 +331,6 @@ class HopfRNNLayerTheta( tf.keras.layers.Layer ):
 
 				{/* Current Codeblock configuration */}
 				<div className="border border-slate-400 rounded-lg bg-[#e9e9e9]">
-					{/* Copy button that needs to be in the client window -> TODO!! */}
-					{/* <button className="relative float-right text-slate-300 hover:text-slate-700 m-2">
-						<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-							/>
-						</svg>
-					</button> */}
 					<CodeBlock className="text-sm">{
 						String.raw`
 @tf.keras.utils.register_keras_serializable( 'activations' )
@@ -446,13 +416,17 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					The network was evaluated using the Mackey–Glass <a href="#ref_6_mky_gls" className="text-slate-500 hover:text-black">[6]</a> and Copy Memory <a href="#ref_7_cpy_mem" className="text-slate-500 hover:text-black">[7]</a> time-dependent datasets. The Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while the Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
+					
+				</p>
+
+				<p className="my-4 text-slate-700">
+					The activation function was evaluated using the Mackey–Glass <Link href="#ref_6_mky_gls" className="text-slate-500 hover:text-black">[6]</Link> and Copy Memory <Link href="#ref_7_cpy_mem" className="text-slate-500 hover:text-black">[7]</Link> time-dependent datasets. The Mackey–Glass represents a chaotic time series with nonlinear temporal relationships, while the Copy Memory tests the ability of a recurrent network to retain information over many timesteps. Both datasets are commonly used to evaluate recurrent neural networks.
 				</p>
 
 				{/* ------------------ Add image of Copy Memory dataset here ------------------ */}
 
 				<p className="my-4 text-slate-700">
-					Different network and dataset sizes were tested against multiple Hopf activation parameters to evaluate the function's performance. These experiments evaluated seven configurations of the initial state <Latex>{String.raw`\gamma_{t_0}`}</Latex>, linear coefficient <Latex>\alpha</Latex>, and nonlinear coefficient <Latex>\beta</Latex>. Each configuration was compared against a Base model using the identity activation and more established complex-valued activation functions, including CpxCard, splitReLU, modReLU, SigLog, and <Latex>{String.raw`\tanh`}</Latex>. In total, 168 models and 4,368 training runs were evaluated across the the two datasets.
+					Different networks were tested against multiple Hopf activation parameters to evaluate the function's performance. Experiments evaluated seven configurations of the initial state <Latex>{String.raw`\gamma_{t_0}`}</Latex>, linear coefficient <Latex>\alpha</Latex>, and nonlinear coefficient <Latex>\beta</Latex>. Each configuration was compared against a Base model, representing an identity activation function, and more established complex-valued activation functions, including CpxCard, splitReLU, modReLU, SigLog, and <Latex>{String.raw`\tanh`}</Latex>. In total, the experiments included 168 unique models that spanned 4,368 training runs.
 				</p>
 
 				<p className="my-4 text-slate-700">
@@ -462,7 +436,7 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				{/* ------------------ EDITING HERE ------------------ */}
 
 				<p className="my-4 text-slate-700">
-					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation. However, further research is required to determine exstensive viability. Practical limitations arose from using complex values and an ODE solver. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
+					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation. However, further research is required to determine viability. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
 				</p>
 
 				<p className="my-4 text-slate-700">

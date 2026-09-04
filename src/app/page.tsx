@@ -3,11 +3,9 @@ import { Section } from '@/gui/core'
 import ProjectCard from '@/gui/components/card';
 
 
-const thesis_text = "This project presents my Master's Thesis while at Iowa State University. \
-My degree was in Computer Science, however my focus included neurscience, machine learning, and dynamical systems, \
-all in a complex-valued sub-space.";
+const thesis_text = "This work summarizes my master’s thesis in Computer Science which investigated the feasibility of a complex-valued activation function in recurrent neural networks. The recurrent and oscillatory differences between biological neurons and artificial networks was the driving motivation of the study. The proposed Hopf activation function is based on the Andronov–Hopf bifurcation, whose limit-cycle dynamics provide a natural representation of amplitude and phase in the complex domain.";
 
-const stuffs_text = "This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well.";
+// const stuffs_text = "This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well.";
 
 export default function HomePage() {
     return (
@@ -35,7 +33,7 @@ export default function HomePage() {
             </Section>
             */}
 
-            <ProjectCard href="/projects/thesis" title="Masters Thesis" >{thesis_text}</ProjectCard>
+            <ProjectCard href="./projects/thesis" title="Masters Thesis" >{thesis_text}</ProjectCard>
             {/* <ProjectCard href="/projects/stuffs" title="Stuffs Page" >{stuffs_text}</ProjectCard> */}
 
         </div>
