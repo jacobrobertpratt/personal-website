@@ -1,6 +1,7 @@
-
-import { Section } from '@/gui/core'
+// import { Section } from '@/gui/core'
 import ProjectCard from '@/gui/components/card';
+
+import image_hopf_act_crop from '@/app/[projects]/thesis/images/hopf_activation_function_crop.png'
 
 
 const thesis_text = "This work summarizes my master’s thesis in Computer Science which investigated the feasibility of a complex-valued activation function in recurrent neural networks. The recurrent and oscillatory differences between biological neurons and artificial networks was the driving motivation of the study. The proposed Hopf activation function is based on the Andronov–Hopf bifurcation, whose limit-cycle dynamics provide a natural representation of amplitude and phase in the complex domain.";
@@ -33,7 +34,13 @@ export default function HomePage() {
             </Section>
             */}
 
-            <ProjectCard href="./projects/thesis" title="Masters Thesis" >{thesis_text}</ProjectCard>
+            <ProjectCard
+                href="./projects/thesis"
+                title="Masters Thesis"
+                image={image_hopf_act_crop}
+                alt="Hopf Activation Cropped">{thesis_text}
+            </ProjectCard>
+
             {/* <ProjectCard href="/projects/stuffs" title="Stuffs Page" >{stuffs_text}</ProjectCard> */}
 
         </div>
