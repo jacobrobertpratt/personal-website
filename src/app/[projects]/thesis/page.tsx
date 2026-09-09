@@ -436,7 +436,7 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				{/* ------------------ EDITING HERE ------------------ */}
 
 				<p className="my-4 text-slate-700">
-					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation. However, further research is required to determine viability. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
+					At a minimum, the results demonstrate that the Hopf activation function is a feasible complex-valued activation. However, further research is required to determine wider viability. Training times were relatively long even for simple models, with smaller networks averaging approximately 20 seconds per epoch and larger networks requiring 45–60 seconds. Interestingly, the best-performing configurations consistently required the longest training times. Numerical instabilities were also encountered, including floating-point precision errors that occasionally caused the ODE solver to fail. These problems were mitigated by up-casting solver inputs from complex64 to complex128 and returning the results to complex64 afterward.
 				</p>
 
 				<p className="my-4 text-slate-700">
