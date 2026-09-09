@@ -20,9 +20,9 @@ export default function HomePage() {
             <Section className="min-h-dvh">
                 <div className='flex flex-col'>
                     <h1 className="text-xl font-bold">scroll for</h1>
-                    <div className="flex h-au">
+                    <div className="flex">
                         <h1 className="text-5xl font-bold">PROJECTS</h1>
-                        <Link href="/#start_of_project_cards" className="text-slate-800 hover:text-slate-500">
+                        <Link href="#start_of_project_cards" className="text-slate-800 hover:text-slate-500">
                             <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
                                 <path d="M19.71,13.29a1,1,0,0,0-1.42,0L13,18.59V3a1,1,0,0,0-2,0V18.59l-5.29-5.3a1,1,0,0,0-1.42,1.42l7,7a1,1,0,0,0,1.42,0l7-7A1,1,0,0,0,19.71,13.29Z" />
                             </svg>
@@ -80,84 +80,6 @@ Software engineer with experience building scalable web applications and improvi
     </div>
 </Link>
 */
-
-//The war began when Nazi Germany, led by Adolf Hitler, invaded Poland, prompting Britain and France to declare war. Axis expansion included German advances across Europe, Italy’s campaigns in Africa, and Japan’s military actions in East Asia and the Pacific. The conflict was characterized by widespread destruction, strategic bombing, and the systematic genocide of six million Jews and millions of other victims in the Holocaust. Key turning points included Germany’s defeat at Stalingrad, the Allied invasion of Normandy on D-Day, and major naval battles in the Pacific such as Midway. The United States entered the war after Japan’s attack on Pearl Harbor in 1941, significantly strengthening the Allied war effort. The war in Europe ended in May 1945 after Germany’s surrender, while the Pacific conflict concluded in August 1945 after the United States dropped atomic bombs on Hiroshima and Nagasaki, leading to Japan’s surrender. World War II resulted in an estimated 70–85 million deaths and reshaped global power structures, contributing to the emergence of the United States and the Soviet Union as superpowers and initiating the Cold War.
-//
-//<div className="relative flex flex-col max-w-auto rounded overflow-hidden shadow-lg">
-//    <Link href="/projects">
-//        <div className="px-6 py-4">
-//            <div className="font-bold text-xl mb-2">Master's Thesis</div>
-//            <p className="text-gray-700 text-base">
-//                This study introduces a novel activation function that leverages the structural properties of the Hopf bifurcation.
-//            </p>
-//        </div>
-//    </Link>
-//    <div className="flex justify-center py-1">
-//        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-auto font-semibold text-gray-700 mr-2 mb-2">
-//            <Link href="https://github.com/jacobrobertpratt/Masters-Thesis-Hopf-bifurcation-as-an-Activation-Function" target="_blank">
-//                Github
-//            </Link>
-//        </span>
-//        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-auto font-semibold text-gray-700 mr-2 mb-2">
-//            <Link href="https://github.com/jacobrobertpratt/Masters-Thesis-Hopf-bifurcation-as-an-Activation-Function" target="_blank">
-//                Paper
-//            </Link>
-//        </span>
-//    </div>
-//</div>
-//
-//<div className="relative flex flex-col max-w-auto rounded overflow-hidden shadow-lg">
-//    <Link href="/projects">
-//        <div className="px-6 py-4">
-//            <div className="font-bold text-xl mb-2">Master's Thesis</div>
-//            <p className="text-gray-700 text-base">
-//                This study introduces a novel activation function that leverages the structural properties of the Hopf bifurcation.
-//            </p>
-//        </div>
-//    </Link>
-//    <div className="flex justify-center py-1">
-//        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-auto font-semibold text-gray-700 mr-2 mb-2">
-//            <Link href="https://github.com/jacobrobertpratt/Masters-Thesis-Hopf-bifurcation-as-an-Activation-Function" target="_blank">
-//                Github
-//            </Link>
-//        </span>
-//        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-auto font-semibold text-gray-700 mr-2 mb-2">
-//            <Link href="https://github.com/jacobrobertpratt/Masters-Thesis-Hopf-bifurcation-as-an-Activation-Function" target="_blank">
-//                Paper
-//            </Link>
-//        </span>
-//    </div>
-//</div>
-//
-//</div>
-//
-//<footer className="flex flex-row flex-wrap items-center justify-center w-full py-6 px-20 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
-//<p className="block text-slate-800 font-semibold text-sm">
-//  Material Tailwind
-//</p>
-//<ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
-//<li>
-//  <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-//    About Us
-//  </a>
-//</li>
-//<li>
-//  <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-//    License
-//  </a>
-//</li>
-//<li>
-//  <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-//    Contribute
-//  </a>
-//</li>
-//<li>
-//  <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-//    Contact Us
-//  </a>
-//</li>
-//</ul>
-//</footer>
 
 //<button className="rounded-md bg-slate-800 py-2 px-4 mt-6 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
 //  Read more
