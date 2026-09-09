@@ -7,7 +7,7 @@ export default function Footer({...props }) {
             <Link
                 href="/"
                 className="hover:text-slate-500"
-            >Home</Link>
+            >home</Link>
         </header>
     );
 }
