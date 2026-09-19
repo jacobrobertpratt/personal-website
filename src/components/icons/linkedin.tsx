@@ -1,3 +1,4 @@
+
 import type { SVGProps } from "react";
 
 export function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
@@ -6,7 +7,7 @@ export function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
       href="https://www.linkedin.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex text-slate-900 hover:text-slate-500"
+      className="flex"
     >
       <svg
         aria-hidden="true"

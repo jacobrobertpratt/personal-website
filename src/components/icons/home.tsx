@@ -1,10 +1,11 @@
+
 import type { SVGProps } from "react";
 
 export function HomeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <a
       href="http://localhost:3000/"
-      className="flex items-center justify-center text-slate-900 hover:text-slate-500"
+      className="flex items-center justify-center"
     >
       <svg
         data-component="Octicon"

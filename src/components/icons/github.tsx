@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import type { SVGProps } from "react";
 
 export function GitHubIcon(props: SVGProps<SVGSVGElement>) {
@@ -7,7 +7,7 @@ export function GitHubIcon(props: SVGProps<SVGSVGElement>) {
       href="https://github.com/jacobrobertpratt"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex text-slate-900 hover:text-slate-500"
+      className="flex"
     >
       <svg
         data-component="Octicon"

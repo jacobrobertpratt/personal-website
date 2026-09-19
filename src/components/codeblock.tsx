@@ -13,16 +13,20 @@ WARNING: Might not want to have this async since it is an HTML tag-class
 	Unsure ...
  */
 export async function CodeBlock(
-	{...props},
-	language: string='python'
+	{ ...props },
+	language: string = 'python'
 ) {
 
 	let code_string: string = String.raw``;
 	let className: string = "";
-	
+
 	// Set local variables to add to HTML 
-	if (('children' in props) && (typeof props.children === 'string')) { code_string = " " + props.children; }
-	if (("className" in props)&& (typeof props.className === 'string')) { className = " " + props.className; }
+	if (('children' in props) && (typeof props.children === 'string')) {
+		code_string = " " + props.children;
+	}
+	if (("className" in props) && (typeof props.className === 'string')) {
+		className = " " + props.className;
+	}
 
 	// Generate HTML Abstract Syntax Tree -> HAST
 	const hast: Root = await codeToHast(
@@ -41,7 +45,7 @@ export async function CodeBlock(
 	// console.log('hast:',hast);
 
 	// Update class and style properties of 'pre' to manipulate codeblock functionality
-	if ("children" in hast) {		
+	if ("children" in hast) {
 		let child: RootContent = hast.children[0];
 		if ("tagName" in child) {
 			if (child.tagName === 'pre') {
@@ -54,11 +58,11 @@ export async function CodeBlock(
 
 	// Build a JSX Runtime Element 
 	return toJsxRuntime(
-			hast,
-			{
-				Fragment,
-				jsx,
-				jsxs
-			}
-		) as JSX.Element;
+		hast,
+		{
+			Fragment,
+			jsx,
+			jsxs
+		}
+	) as JSX.Element;
 }
