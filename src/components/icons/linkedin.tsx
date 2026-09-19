@@ -6,7 +6,7 @@ import type { SVGProps } from "react";
 export function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <Link
-      href="https://www.linkedin.com/in/jacobrobertpratt"
+      href="https://www.linkedin.com/in/jacobrobertpratt/"
       target="_blank"
       rel="noopener noreferrer"
       className="flex"

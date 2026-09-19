@@ -5,7 +5,7 @@ import type { SVGProps } from "react";
 export function HomeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <a
-      href="http://localhost:3000/"
+      href="https://www.jacobrobertpratt.com/"
       className="flex items-center justify-center"
     >
       <svg

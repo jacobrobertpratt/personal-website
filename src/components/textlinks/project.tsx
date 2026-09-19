@@ -10,7 +10,7 @@ export function ProjectCardLink(props: SVGProps<SVGSVGElement>) {
 	}
 	return (
 		<Link
-			href="http://localhost:3000/#start_of_project_cards"
+			href="https://www.jacobrobertpratt.com/#start_of_project_cards"
 			className={className}>
 			PROJECTS
 		</Link>

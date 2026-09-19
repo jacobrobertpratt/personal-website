@@ -4,7 +4,7 @@ import type { SVGProps } from "react";
 export function GitHubIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <a
-      href="https://github.com/jacobrobertpratt"
+      href="https://github.com/jacobrobertpratt/"
       target="_blank"
       rel="noopener noreferrer"
       className="flex"

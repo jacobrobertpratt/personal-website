@@ -10,7 +10,7 @@ export function HomeLink(props: SVGProps<SVGSVGElement>) {
 	}
 	return (
 		<Link
-			href="http://localhost:3000/"
+			href="https://www.jacobrobertpratt.com/"
 			className={className}>
 			HOME
 		</Link>
