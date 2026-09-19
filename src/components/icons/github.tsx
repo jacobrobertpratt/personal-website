@@ -7,7 +7,7 @@ export function GitHubIcon(props: SVGProps<SVGSVGElement>) {
       href="https://github.com/jacobrobertpratt"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex text-slate-900 hover:text-slate-500 underline"
+      className="flex text-slate-900 hover:text-slate-500"
     >
       <svg
         data-component="Octicon"
