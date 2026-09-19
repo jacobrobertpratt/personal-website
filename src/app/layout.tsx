@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 
 import { GLOBAL_APP_TITLE } from '@/components/global';
 
+import { Section } from "@/components/section";
 import Header from "@/components/header/header";
 import Footer from '@/components/footer/footer'
 
@@ -27,6 +28,8 @@ export default function RootLayout({
                 <main className="min-h-screen min-w-full" >{children}</main>
 
                 {/* <Footer /> */}
+
+                <Section />
 
             </body>
         </html >
