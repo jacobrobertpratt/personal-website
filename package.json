@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "npm run start",
     "lint": "eslint",
-    "reset": "rm -rf node_modules package-lock.json && npm cache clean --force && npm install"
+    "reset": "rm -rf node_modules package-lock.json .next && npm cache clean --force && npm install"
   },
   "dependencies": {
     "@citation-js/plugin-csl": "^0.8.2",
