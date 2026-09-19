@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { Section } from '@/gui/section'
-import ProjectCard from '@/gui/components/projectcard';
+import { Section } from '@/components/section'
+import ProjectCard from '@/components/projectcard';
 
 import image_hopf_act_crop from '@/app/[projects]/thesis/images/hopf_activation_function_crop.png'
 

@@ -5,8 +5,8 @@ import type { Metadata } from "next";
 
 import { GLOBAL_APP_TITLE } from '@/global';
 
-import Header from "@/gui/components/header";
-import Footer from '@/gui/components/footer'
+import Header from "@/components/header";
+import Footer from '@/components/footer'
 
 export const metadata: Metadata = {
   title: GLOBAL_APP_TITLE, // Tab Text //

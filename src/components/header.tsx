@@ -4,13 +4,42 @@ import Image from "next/image";
 
 // import image_home_icon from "@/../public/home.svg"
 // import image_octocat from "@/../public/github/GitHub_Invertocat_Black.svg"
-import image_octocat from "@/../public/github/GitHub_Invertocat_Black_Clearspace.svg"
-import image_linkedin from "@/../public/InBug-Black.png"
+import image_octocat from "@/../public/github/GitHub_Invertocat_Black_Clearspace.png"
+import image_linkedin from "@/../public/linkedin/linkedin-icon.png"
+
+import type { SVGProps } from "react";
+
+export function GitHubIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      data-component="Octicon"
+      aria-hidden="true"
+      focusable="false"
+      className="octicon octicon-mark-github"
+      viewBox="0 0 24 24"
+      width={32}
+      height={32}
+      fill="currentColor"
+      display="inline-block"
+      overflow="visible"
+      style={{ verticalAlign: "text-bottom" }}
+      {...props}
+    >
+      <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943" />
+    </svg>
+  );
+}
 
 export default function Header({...props }) {
     return (
         <header className="sticky top-0 z-50 flex flex-row w-full justify-between border-slate-200 border-b bg-inherit">
             <Link href="/" className="text-slate-900 hover:text-slate-500">
+            
+                <GitHubIcon
+                    width={24}
+                    height={24}
+                    className="text-gray-800 hover:text-black"
+                />
 
                 {/* <svg viewBox="0 0 24 24" className="flex items-center justify-center h-12 w-12"> */}
                     {/* <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -20,9 +49,9 @@ export default function Header({...props }) {
                     {/* </g> */}
                 {/* </svg> */}
 
-                <svg viewBox="0 0 24 24" className="flex items-center justify-center h-12 w-12 ">
+                {/* <svg viewBox="0 0 24 24" className="flex items-center justify-center h-12 w-12 ">
                     <path d="M9 20H7C5.89543 20 5 19.1046 5 18V10.9199C5 10.336 5.25513 9.78132 5.69842 9.40136L10.6984 5.11564C11.4474 4.47366 12.5526 4.47366 13.3016 5.11564L18.3016 9.40136C18.7449 9.78132 19 10.336 19 10.9199V18C19 19.1046 18.1046 20 17 20H15M9 20V14C9 13.4477 9.44772 13 10 13H14C14.5523 13 15 13.4477 15 14V20M9 20H15"/>
-                </svg>
+                </svg> */}
 
                 {/* <svg viewBox="0 0 24 24" className="flex items-center justify-center h-12 w-12 fill-current">
                     <path d="M4 11.4522V16.8002C4 17.9203 4 18.4807 4.21799 18.9086C4.40973 19.2849 4.71547 19.5906 5.0918 19.7823C5.5192 20.0001 6.07899 20.0001 7.19691 20.0001H16.8031C17.921 20.0001 18.48 20.0001 18.9074 19.7823C19.2837 19.5906 19.5905 19.2849 19.7822 18.9086C20 18.4811 20 17.9216 20 16.8037V11.4522C20 10.9179 19.9995 10.6506 19.9346 10.4019C19.877 10.1816 19.7825 9.97307 19.6546 9.78464C19.5102 9.57201 19.3096 9.39569 18.9074 9.04383L14.1074 4.84383C13.3608 4.19054 12.9875 3.86406 12.5674 3.73982C12.1972 3.63035 11.8026 3.63035 11.4324 3.73982C11.0126 3.86397 10.6398 4.19014 9.89436 4.84244L5.09277 9.04383C4.69064 9.39569 4.49004 9.57201 4.3457 9.78464C4.21779 9.97307 4.12255 10.1816 4.06497 10.4019C4 10.6506 4 10.9179 4 11.4522Z"/>
