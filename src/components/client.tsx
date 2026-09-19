@@ -19,12 +19,12 @@ const WidgetLayoutStyles = {
     button: ""
 }
 
-export function Button({...props}) {
+export function Button({ ...props }) {
     props.className = WidgetLayoutStyles.button + " " + props.className
-    return ( <button {...props}>{props.children}</button> );
+    return (<button {...props}>{props.children}</button>);
 }
 
-export function ClickButton({...props}) {
+export function ClickButton({ ...props }) {
 
     const handleClick = () => {
         if (isActive) {
@@ -47,7 +47,7 @@ export function ClickButton({...props}) {
             </Button>
         );
     }
-    
-    return ( to_return );
+
+    return (to_return);
 
 }

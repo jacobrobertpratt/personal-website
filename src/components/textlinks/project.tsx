@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { SVGProps } from "react";
 
-export function ProjectCardLink(props: SVGProps<SVGSVGElement>) {
+export function ProjectTextLink(props: SVGProps<SVGSVGElement>) {
 	let className = "font-bold";
 	if (("className" in props) && (typeof props.className === 'string')) {
 		className += " " + props.className;

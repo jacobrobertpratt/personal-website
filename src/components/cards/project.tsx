@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function ProjectCard({ ...props }) {
+    // Check for prop elements
     return (
         <Link
             href={props.href}
