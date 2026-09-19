@@ -4,18 +4,12 @@ import ProjectCard from '@/components/projectcard';
 
 import image_hopf_act_crop from '@/app/[projects]/thesis/images/hopf_activation_function_crop.png'
 
-
-
 const thesis_text = "This work summarizes my master’s thesis in Computer Science which investigated the feasibility of a complex-valued activation function in recurrent neural networks. The recurrent and oscillatory differences between biological neurons and artificial networks was the driving motivation of the study. The proposed Hopf activation function is based on the Andronov–Hopf bifurcation, whose limit-cycle dynamics provide a natural representation of amplitude and phase in the complex domain.";
-
-// const stuffs_text = "This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well. This page has a bunch of stuffs on it. There is other stuffs on this as well, but yeah you know. Hopefully there will be more and more stuffs on this later as well.";
 
 export default function HomePage() {
     return (
 
         <div className='flex flex-col justify-center'>
-
-            {/* Navigation Header that will become it's own container. */}
 
             <Section className="min-h-dvh">
                 <div className='flex flex-col'>
@@ -45,11 +39,6 @@ export default function HomePage() {
                 </ProjectCard>
             </div>
 
-            {/* <ProjectCard href="/projects/stuffs" title="Stuffs Page" >{stuffs_text}</ProjectCard> */}
-
-            <Section />
-            <Section />
-            <Section />
             <Section />
 
         </div>
