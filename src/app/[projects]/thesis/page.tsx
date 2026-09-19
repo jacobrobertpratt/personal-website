@@ -4,7 +4,7 @@ import image_iso_phase_plane from './images/iso_phase_planes_crpd.png';
 import image_limit_cycle from './images/dyn_sys_limit_cycle_example.png'
 import image_hopf_activation from './images/hopf_activation_function.png'
 
-import { Latex } from '@/latex';
+import { Latex } from '@/components/latex';
 import { CodeBlock } from '@/components/codeblock'
 import Link from "next/link";
 

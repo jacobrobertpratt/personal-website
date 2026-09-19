@@ -3,7 +3,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
-import { GLOBAL_APP_TITLE } from '@/global';
+import { GLOBAL_APP_TITLE } from '@/components/global';
 
 import Header from "@/components/header";
 import Footer from '@/components/footer'
