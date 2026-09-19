@@ -9,16 +9,16 @@ import { CodeBlock } from '@/components/codeblock'
 import Link from "next/link";
 
 export default async function ThesisPage() {
-	
+
 	return (
 		<div className="flex flex-col items-center justify-center min-h-32 pb-60">
-			
+
 			{/* TITLE */}
 			<section className="w-9/11 my-10 p-2">
-			{/* <Section className="border-black border-2" > */}
+				{/* <Section className="border-black border-2" > */}
 				<ul className="flex flex-wrap justify-start">
 					<div className="text-slate-900 md:text-5xl text-3xl">
-						Study <b/> of the Hopf Bifurcation as a Complex Activation Function
+						Study <b /> of the Hopf Bifurcation as a Complex Activation Function
 					</div>
 					<div className="text-slate-700 md:text-2xl text-xl my-4">
 						Summary of M.S. Thesis - Computer Science
@@ -41,6 +41,8 @@ export default async function ThesisPage() {
 					src={image_iso_phase_plane}
 					alt="Dyn Sys Neuro - Text"
 					className="lg:float-right lg:w-1/3 rounded-lg"
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+					preload={true}
 				/>
 
 				<p className="my-4 text-slate-700">
@@ -59,13 +61,13 @@ export default async function ThesisPage() {
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					While studying "Neuroscience" by Dale Purves et al. 
-					<Link href='#ref_purves_1' className='text-slate-500 hover:text-black'> [1]</Link>, 
+					While studying "Neuroscience" by Dale Purves et al.
+					<Link href='#ref_purves_1' className='text-slate-500 hover:text-black'> [1]</Link>,
 					an obvious difference between biological and artificial neural networks became apparent. That is, biological networks are highly recurrent with information encoded as frequencies of neuronal firing, while artificial networks transform weighted inputs via nonlinear activation functions. The neuronal frequency and phase having no direct analogue in most architectures.
 				</p>
 
 				<p className="my-4 text-slate-700">
-					Dynamical Systems in Neuroscience by Eugene M. Izhikevich 
+					Dynamical Systems in Neuroscience by Eugene M. Izhikevich
 					<Link href='#ref_izhikevich_2' className='text-slate-500 hover:text-black'> [2] </Link>
 					provides another method to model neuronal behavior, as dynamical systems capable of oscillation and repetitive firing. These models involve frequency, amplitude, and phase, and can be represented compactly with complex values.
 				</p>
@@ -78,7 +80,7 @@ export default async function ThesisPage() {
 				<p className="my-4 text-slate-700">
 					Complex-valued mathematics is fundamental to many technologies we take for granted today, including signal processing, filtering, communication, and digital compression. Despite its usefulness, it remains relatively uncommon in mainstream machine learning primarily due to it being mathematically unintuitive and lacking framekwork and hardware support. That being said, an opportunity exhists to combine dynamical neuron models with complex-valued neural networks to more directly represent the temporal behavior observed in biological systems.
 				</p>
-				
+
 
 
 
@@ -106,7 +108,7 @@ export default async function ThesisPage() {
 				</p>
 
 				<p className="my-4 text-slate-700">
-					A dynamical system describes the change of a state over an interval of time that is governed by an evolution equations. This system can be defined with these three basic components: a state space <Latex>x_i</Latex>, an evolution function <Latex>{String.raw`\frac{dx}{dt}`}</Latex>, and a time domain <Latex>t_0 - t_n</Latex>. The evolution function produces trajectories through the state space, often visualized as a phase space. In this phase space, and of particular interest, are fixed locations, where the state no longer changes. These points can be stable, attracting nearby trajectories, or unstable, repelling them. 
+					A dynamical system describes the change of a state over an interval of time that is governed by an evolution equations. This system can be defined with these three basic components: a state space <Latex>x_i</Latex>, an evolution function <Latex>{String.raw`\frac{dx}{dt}`}</Latex>, and a time domain <Latex>t_0 - t_n</Latex>. The evolution function produces trajectories through the state space, often visualized as a phase space. In this phase space, and of particular interest, are fixed locations, where the state no longer changes. These points can be stable, attracting nearby trajectories, or unstable, repelling them.
 				</p>
 
 				<Image
@@ -118,7 +120,7 @@ export default async function ThesisPage() {
 				<p className="my-4 text-slate-700">
 					A bifurcation occurs when the coefficients of a system cause a qualitative change in the structure or behavior of the phase space. For example, a fixed point may appear, disappear, or change stability if coefficients crosse a critical value. Bifurcations can often be represented by simplified differential equations called normal forms, which preserve the essential behavior of the bifurcation while removing unnecessary complexity.
 				</p>
-				
+
 				{/* <Link href='#ref_han_3' className='text-red-500'> [3]</Link> */}
 
 				<p className="my-4 text-slate-700">
@@ -164,17 +166,17 @@ export default async function ThesisPage() {
 
 
 
-				
+
 				<h1 className="mt-12 text-2xl text-slate-900">
 					Implementation
 				</h1>
 
 				<p className="my-4 text-slate-700">
 					This research was implemented with Python using TensorFlow <Link href="#ref_4_tens_flow" className="text-slate-500 hover:text-black">[4]</Link> and the TensorFlow Probability (TFP) <Link href="#ref_5_tfp" className="text-slate-500 hover:text-black">[5]</Link> library. This research relied on the TFP library already having the Dormand-Prince (DOPRI) solver with the adjoint sensitivity method already implemented for gradient updates. This allowed the Hopf activation function to compose gradients during gradient-based training. The work of Chen et al. (2018) <Link href="#ref_8_neural_ode" className="text-slate-500 hover:text-black">[8]</Link>, Neural Ordinary Differential Equations, provided the groundwork for applying the adjoint sensitivity method to machine learning with ODE solvers.
-				</p>				
+				</p>
 
 				<p className="my-4 text-slate-700">
-					Working with TensorFlow's Keras in the complex-valued domain required several custom  implementations. First was defining a single RNN operation in a new tf.keras.layer, called a 'cell'. Below is a simplified example of the implementation. 
+					Working with TensorFlow's Keras in the complex-valued domain required several custom  implementations. First was defining a single RNN operation in a new tf.keras.layer, called a 'cell'. Below is a simplified example of the implementation.
 				</p>
 
 				{/* Current Codeblock configuration */}
@@ -416,7 +418,7 @@ class HopfActCpx( tf.keras.layers.Layer ):
 				</h1>
 
 				<p className="my-4 text-slate-700">
-					
+
 				</p>
 
 				<p className="my-4 text-slate-700">
@@ -455,7 +457,7 @@ class HopfActCpx( tf.keras.layers.Layer ):
 					<div className="text-left pl-2">D. Purves et al., Eds., Neuroscience. New York Oxford: Sinauer Associates is an imprint of Oxford University Press, 2018.</div>
 				</div>
 
-				<div id="ref_izhikevich_2" className="flex flex-row my-4"> 	
+				<div id="ref_izhikevich_2" className="flex flex-row my-4">
 					<div className="justify-left pr-2">[2]</div>
 					<div className="text-left pl-2">
 						E. M. Izhikevich, Dynamical Systems in Neuroscience: The Geometry of Excitability and Bursting. in Computational Neuroscience Series. Cambridge, MA, USA: MIT Press, 2006.

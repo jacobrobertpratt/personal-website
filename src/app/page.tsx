@@ -1,4 +1,3 @@
-import Link from 'next/link';
 
 import { Section } from '@/components/section'
 import ProjectCard from '@/components/projectcard';

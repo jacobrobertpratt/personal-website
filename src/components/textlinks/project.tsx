@@ -1,4 +1,6 @@
+// "use client"
 
+import Link from "next/link";
 import type { SVGProps } from "react";
 
 export function ProjectCardLink(props: SVGProps<SVGSVGElement>) {
@@ -7,12 +9,11 @@ export function ProjectCardLink(props: SVGProps<SVGSVGElement>) {
 		className += " " + props.className;
 	}
 	return (
-		<a
+		<Link
 			href="http://localhost:3000/#start_of_project_cards"
-			className={className} //"font-bold"// hover:text-slate-500"
-		>
+			className={className}>
 			PROJECTS
-		</a >
+		</Link>
 	);
 }
 
