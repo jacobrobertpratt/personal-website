@@ -3,8 +3,9 @@
 
 export var APP_MAIN_TITLE: string = "Jacob Robert Pratt";
 
-// export var APP_ROOT_DOMAIN: string = "https://www.jacobrobertpratt.com/";
-export var APP_ROOT_HREF: string = "http://localhost:3000/";
+// export var APP_ROOT_HREF: string = "/";
+export var APP_ROOT_HREF: string = "https://www.jacobrobertpratt.com/";
+// export var APP_ROOT_HREF: string = "http://localhost:3000/";
 export var APP_PROJ_ID: string = "main_proj_card_list";
 
 

@@ -3,8 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { APP_PROJ_HREF } from "@/common";
-
 export default function ProjectCard({ ...props }) {
     // Check for prop elements
     return (

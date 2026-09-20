@@ -21,7 +21,7 @@ function ProjectCardsList() {
             className="flex flex-col items-center justify-center w-3/4 h-96 space-t-24">
             <ProjectCard
                 href="./projects/thesis"
-                title="Study of the Hopf Bifurcation as a Complex Activation Function"
+                title="A Hopf Bifurcation as a Complex Activation Function"
                 image={image_hopf_act_crop}
                 alt="Hopf Activation Cropped">
                 {thesis_text}
@@ -31,12 +31,11 @@ function ProjectCardsList() {
 }
 
 export default function HomePage() {
+
     return (
 
         <div className='flex flex-col items-center justify-center'>
 
-            <Section />
-            <Section />
             <Section />
 
             <ProjectCardsList />
@@ -44,5 +43,6 @@ export default function HomePage() {
             <Section />
 
         </div >
+
     );
 }
