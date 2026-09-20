@@ -5,10 +5,10 @@ import ProjectCard from "@/components/cards/project";
 
 import image_hopf_act_crop from '@/app/[projects]/thesis/images/hopf_activation_function_crop.png'
 
-import { APP_PROJ_HREF } from "@/common";
+import { APP_PROJ_ID } from "@/common";
 
 function LandingSection() {
-    return (<div />);
+    return (<Section />);
 }
 
 function ProjectCardsList() {
@@ -17,18 +17,15 @@ function ProjectCardsList() {
 
     return (
         <div
-            id={APP_PROJ_HREF}
-            className="flex flex-col items-center justify-center w-3/4 h-auto space-y-1"
-        >
-
+            id={APP_PROJ_ID}
+            className="flex flex-col items-center justify-center w-3/4 h-96 space-t-24">
             <ProjectCard
                 href="./projects/thesis"
                 title="Study of the Hopf Bifurcation as a Complex Activation Function"
                 image={image_hopf_act_crop}
-                alt="Hopf Activation Cropped"
-            >{thesis_text}
+                alt="Hopf Activation Cropped">
+                {thesis_text}
             </ProjectCard>
-
         </div>
     );
 }
@@ -38,6 +35,8 @@ export default function HomePage() {
 
         <div className='flex flex-col items-center justify-center'>
 
+            <Section />
+            <Section />
             <Section />
 
             <ProjectCardsList />

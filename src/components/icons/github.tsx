@@ -15,8 +15,8 @@ export function GitHubIcon(props: SVGProps<SVGSVGElement>) {
         focusable="false"
         className="octicon octicon-mark-github"
         viewBox="0 0 24 24"
-        width={32}
-        height={32}
+        width={24}
+        height={24}
         fill="currentColor"
         display="inline-block"
         overflow="visible"
