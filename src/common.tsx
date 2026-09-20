@@ -1,23 +1,25 @@
 
-/** ---------------------- APPLICATION ---------------------- **/
+/** ---------------------- GLOBAL VARIABLES ---------------------- **/
 
-export var GLOBAL_APP_TITLE: string = "Jacob Robert Pratt";
-export var GLOBAL_APP_DESCRIPTION: string = "Personal portfolio of projects and work experience.";
+export var APP_MAIN_TITLE: string = "Jacob Robert Pratt";
 
-export var GLOBAL_APP_COPYWRITE: string = '© 2026 ' + GLOBAL_APP_TITLE + ' Inc. All rights reserved.';
+export var APP_ROOT_DOMAIN: string = "http://localhost:3000/";
+// export var APP_ROOT_DOMAIN: string = "https://www.jacobrobertpratt.com/";
 
 /** ---------------------- PATH ---------------------- **/
 
+// Used for client side routing
 import path from 'path';
 export const PATH_ROOT_APP = path.join(process.cwd(), "app");
+
 
 /** ---------------------- STYLES ---------------------- **/
 
 
 
-export const HeaderTitleStyle = {
-    classname: "text-4xl font-bold"
-}
+// export const HeaderTitleStyle = {
+//     classname: "text-4xl font-bold"
+// }
 
 // const head_classname: string = "sticky top-0 z-50 w-full bg-green-500";
 // const nav_classname: string = "container mx-auto flex items-center justify-center";

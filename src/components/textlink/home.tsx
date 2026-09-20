@@ -1,18 +1,21 @@
 // "use client"
 
 import Link from "next/link";
-import type { SVGProps } from "react";
 
-export function ProjectTextLink(props: SVGProps<SVGSVGElement>) {
+import type { SVGProps } from "react";
+import { APP_ROOT_DOMAIN } from "@/common";
+
+
+export function HomeLink(props: SVGProps<SVGSVGElement>) {
 	let className = "font-bold";
 	if (("className" in props) && (typeof props.className === 'string')) {
 		className += " " + props.className;
 	}
 	return (
 		<Link
-			href="https://www.jacobrobertpratt.com/#start_of_project_cards"
+			href={APP_ROOT_DOMAIN}
 			className={className}>
-			PROJECTS
+			HOME
 		</Link>
 	);
 }

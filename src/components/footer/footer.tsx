@@ -1,5 +1,5 @@
 
-import { HomeLink } from "../textlinks/home";
+import { HomeLink } from "../textlink/home";
 
 export default function Footer({ ...props }) {
     return (

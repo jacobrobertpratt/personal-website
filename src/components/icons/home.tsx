@@ -2,10 +2,14 @@
 
 import type { SVGProps } from "react";
 
+import type { Icon } from "next/dist/lib/metadata/types/metadata-types";
+
+import { APP_ROOT_DOMAIN } from "@/common"; APP_ROOT_DOMAIN
+
 export function HomeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <a
-      href="https://www.jacobrobertpratt.com/"
+      href={APP_ROOT_DOMAIN}
       className="flex items-center justify-center"
     >
       <svg

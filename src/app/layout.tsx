@@ -1,18 +1,8 @@
 
 import "./globals.css";
 
-import type { Metadata } from "next";
-
-import { GLOBAL_APP_TITLE } from '@/components/global';
-
 import { Section } from "@/components/section";
 import Header from "@/components/header/header";
-import Footer from '@/components/footer/footer'
-
-export const metadata: Metadata = {
-    title: GLOBAL_APP_TITLE, // Tab Text //
-    description: "Personal portfolio & projects."
-};
 
 export default function RootLayout({
     children,
@@ -27,9 +17,9 @@ export default function RootLayout({
 
                 <main className="min-h-screen min-w-full" >{children}</main>
 
+                <Section />
                 {/* <Footer /> */}
 
-                <Section />
 
             </body>
         </html >
