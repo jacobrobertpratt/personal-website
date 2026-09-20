@@ -4,12 +4,12 @@ import type { SVGProps } from "react";
 
 import type { Icon } from "next/dist/lib/metadata/types/metadata-types";
 
-import { APP_ROOT_DOMAIN } from "@/common"; APP_ROOT_DOMAIN
+import { APP_ROOT_HREF } from "@/common"; APP_ROOT_HREF
 
 export function HomeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <a
-      href={APP_ROOT_DOMAIN}
+      href={APP_ROOT_HREF}
       className="flex items-center justify-center"
     >
       <svg

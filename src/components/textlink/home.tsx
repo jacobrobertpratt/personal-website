@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import type { SVGProps } from "react";
-import { APP_ROOT_DOMAIN } from "@/common";
+import { APP_ROOT_HREF } from "@/common";
 
 
 export function HomeLink(props: SVGProps<SVGSVGElement>) {
@@ -13,7 +13,7 @@ export function HomeLink(props: SVGProps<SVGSVGElement>) {
 	}
 	return (
 		<Link
-			href={APP_ROOT_DOMAIN}
+			href={APP_ROOT_HREF}
 			className={className}>
 			HOME
 		</Link>
