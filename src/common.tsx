@@ -15,8 +15,6 @@ export const PATH_ROOT_APP = path.join(process.cwd(), "app");
 
 /** ---------------------- STYLES ---------------------- **/
 
-
-
 // export const HeaderTitleStyle = {
 //     classname: "text-4xl font-bold"
 // }
