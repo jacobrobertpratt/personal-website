@@ -7,25 +7,28 @@ import type { Icon } from "next/dist/lib/metadata/types/metadata-types";
 import { APP_ROOT_HREF } from "@/common"; APP_ROOT_HREF
 
 export function HomeIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <a
-      href={APP_ROOT_HREF}
-      className="flex items-center justify-center"
-    >
-      <svg
-        data-component="Octicon"
-        aria-hidden="true"
-        focusable="false"
-        className="octicon octicon-home"
-        viewBox="0 0 16 16"
-        width={32}
-        height={32}
-        fill="currentColor"
-        style={{ verticalAlign: "text-bottom" }}
-        {...props}
-      >
-        <path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z" />
-      </svg>
-    </a>
-  );
+	return (
+		<a
+			href={APP_ROOT_HREF}
+			className="flex items-center justify-center"
+		>
+			<svg
+				data-component="Octicon"
+				aria-hidden="true"
+				focusable="false"
+				className="octicon octicon-mark-github"
+				viewBox="0 0 16 16"
+				width={32}
+				height={32}
+				fill="currentColor"
+				display="inline-block"
+				overflow="visible"
+				style={{ verticalAlign: "text-bottom" }}
+				{...props}
+			>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M21.4498 10.275L11.9998 3.1875L2.5498 10.275L2.9998 11.625H3.7498V20.25H20.2498V11.625H20.9998L21.4498 10.275ZM5.2498 18.75V10.125L11.9998 5.0625L18.7498 10.125V18.75H14.9999V14.3333L14.2499 13.5833H9.74988L8.99988 14.3333V18.75H5.2498ZM10.4999 18.75H13.4999V15.0833H10.4999V18.75Z" fill="#080341" />
+
+			</svg>
+		</a>
+	);
 }
